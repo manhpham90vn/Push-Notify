@@ -7,21 +7,90 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB13A8A428EE791C0073CFC2 /* Alamofire.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB13A8A328EE791C0073CFC2 /* Alamofire.xcframework */; };
+		BB13A8A528EE791C0073CFC2 /* Alamofire.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BB13A8A328EE791C0073CFC2 /* Alamofire.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BB13A8A728EE79230073CFC2 /* Alamofire.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB13A8A328EE791C0073CFC2 /* Alamofire.xcframework */; };
+		BB13A8A828EE79230073CFC2 /* Alamofire.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BB13A8A328EE791C0073CFC2 /* Alamofire.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BB13A8B628EE7F8B0073CFC2 /* ECError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8AB28EE7F8A0073CFC2 /* ECError.swift */; };
+		BB13A8B728EE7F8B0073CFC2 /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8AC28EE7F8A0073CFC2 /* Data+Extensions.swift */; };
+		BB13A8B828EE7F8B0073CFC2 /* ECSignable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8AD28EE7F8A0073CFC2 /* ECSignable.swift */; };
+		BB13A8B928EE7F8B0073CFC2 /* ECPrivateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8AE28EE7F8A0073CFC2 /* ECPrivateKey.swift */; };
+		BB13A8BA28EE7F8B0073CFC2 /* ECDecryptable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8AF28EE7F8B0073CFC2 /* ECDecryptable.swift */; };
+		BB13A8BB28EE7F8B0073CFC2 /* ECPublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8B028EE7F8B0073CFC2 /* ECPublicKey.swift */; };
+		BB13A8BC28EE7F8B0073CFC2 /* EllipticCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8B128EE7F8B0073CFC2 /* EllipticCurve.swift */; };
+		BB13A8BD28EE7F8B0073CFC2 /* SSLPointerTricks.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8B228EE7F8B0073CFC2 /* SSLPointerTricks.swift */; };
+		BB13A8BE28EE7F8B0073CFC2 /* ASN1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8B328EE7F8B0073CFC2 /* ASN1.swift */; };
+		BB13A8BF28EE7F8C0073CFC2 /* ECEncryptable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8B428EE7F8B0073CFC2 /* ECEncryptable.swift */; };
+		BB13A8C028EE7F8C0073CFC2 /* ECSignature.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8B528EE7F8B0073CFC2 /* ECSignature.swift */; };
+		BB13A8C128EE82960073CFC2 /* ASN1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8B328EE7F8B0073CFC2 /* ASN1.swift */; };
+		BB13A8C228EE82990073CFC2 /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8AC28EE7F8A0073CFC2 /* Data+Extensions.swift */; };
+		BB13A8C328EE829B0073CFC2 /* ECDecryptable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8AF28EE7F8B0073CFC2 /* ECDecryptable.swift */; };
+		BB13A8C428EE829D0073CFC2 /* ECEncryptable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8B428EE7F8B0073CFC2 /* ECEncryptable.swift */; };
+		BB13A8C528EE829F0073CFC2 /* ECError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8AB28EE7F8A0073CFC2 /* ECError.swift */; };
+		BB13A8C628EE82A20073CFC2 /* ECPrivateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8AE28EE7F8A0073CFC2 /* ECPrivateKey.swift */; };
+		BB13A8C728EE82A50073CFC2 /* ECPublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8B028EE7F8B0073CFC2 /* ECPublicKey.swift */; };
+		BB13A8C828EE82A70073CFC2 /* ECSignable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8AD28EE7F8A0073CFC2 /* ECSignable.swift */; };
+		BB13A8C928EE82A90073CFC2 /* ECSignature.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8B528EE7F8B0073CFC2 /* ECSignature.swift */; };
+		BB13A8CA28EE82AB0073CFC2 /* EllipticCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8B128EE7F8B0073CFC2 /* EllipticCurve.swift */; };
+		BB13A8CB28EE82AD0073CFC2 /* SSLPointerTricks.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8B228EE7F8B0073CFC2 /* SSLPointerTricks.swift */; };
 		BB480C5C28ED1D7600958F38 /* Push_NotifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB480C4C28ED1D7500958F38 /* Push_NotifyApp.swift */; };
 		BB480C5D28ED1D7600958F38 /* Push_NotifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB480C4C28ED1D7500958F38 /* Push_NotifyApp.swift */; };
 		BB480C5E28ED1D7600958F38 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB480C4D28ED1D7500958F38 /* ContentView.swift */; };
 		BB480C5F28ED1D7600958F38 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB480C4D28ED1D7500958F38 /* ContentView.swift */; };
 		BB480C6028ED1D7600958F38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB480C4E28ED1D7600958F38 /* Assets.xcassets */; };
 		BB480C6128ED1D7600958F38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB480C4E28ED1D7600958F38 /* Assets.xcassets */; };
+		BBBBD4DF28ED624A007CE31E /* Payloads.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBD4DE28ED624A007CE31E /* Payloads.swift */; };
+		BBBBD4E028ED624A007CE31E /* Payloads.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBD4DE28ED624A007CE31E /* Payloads.swift */; };
+		BBBBD4E228ED6454007CE31E /* Push.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBD4E128ED6454007CE31E /* Push.swift */; };
+		BBBBD4E328ED6454007CE31E /* Push.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBD4E128ED6454007CE31E /* Push.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		BB13A8A628EE791C0073CFC2 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BB13A8A528EE791C0073CFC2 /* Alamofire.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB13A8A928EE79230073CFC2 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BB13A8A828EE79230073CFC2 /* Alamofire.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		BB13A8A328EE791C0073CFC2 /* Alamofire.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Alamofire.xcframework; path = Carthage/Build/Alamofire.xcframework; sourceTree = "<group>"; };
+		BB13A8AB28EE7F8A0073CFC2 /* ECError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECError.swift; sourceTree = "<group>"; };
+		BB13A8AC28EE7F8A0073CFC2 /* Data+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
+		BB13A8AD28EE7F8A0073CFC2 /* ECSignable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECSignable.swift; sourceTree = "<group>"; };
+		BB13A8AE28EE7F8A0073CFC2 /* ECPrivateKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECPrivateKey.swift; sourceTree = "<group>"; };
+		BB13A8AF28EE7F8B0073CFC2 /* ECDecryptable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECDecryptable.swift; sourceTree = "<group>"; };
+		BB13A8B028EE7F8B0073CFC2 /* ECPublicKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECPublicKey.swift; sourceTree = "<group>"; };
+		BB13A8B128EE7F8B0073CFC2 /* EllipticCurve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EllipticCurve.swift; sourceTree = "<group>"; };
+		BB13A8B228EE7F8B0073CFC2 /* SSLPointerTricks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSLPointerTricks.swift; sourceTree = "<group>"; };
+		BB13A8B328EE7F8B0073CFC2 /* ASN1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASN1.swift; sourceTree = "<group>"; };
+		BB13A8B428EE7F8B0073CFC2 /* ECEncryptable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECEncryptable.swift; sourceTree = "<group>"; };
+		BB13A8B528EE7F8B0073CFC2 /* ECSignature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECSignature.swift; sourceTree = "<group>"; };
 		BB480C4C28ED1D7500958F38 /* Push_NotifyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Push_NotifyApp.swift; sourceTree = "<group>"; };
 		BB480C4D28ED1D7500958F38 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BB480C4E28ED1D7600958F38 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB480C5328ED1D7600958F38 /* Push Notify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Push Notify.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB480C5928ED1D7600958F38 /* Push Notify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Push Notify.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB480C5B28ED1D7600958F38 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		BBBBD4DE28ED624A007CE31E /* Payloads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payloads.swift; sourceTree = "<group>"; };
+		BBBBD4E128ED6454007CE31E /* Push.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Push.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB13A8A428EE791C0073CFC2 /* Alamofire.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -36,18 +106,55 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB13A8A728EE79230073CFC2 /* Alamofire.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BB13A88B28EE788B0073CFC2 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				BB13A8AA28EE7F580073CFC2 /* CryptorECC */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		BB13A8A228EE791C0073CFC2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BB13A8A328EE791C0073CFC2 /* Alamofire.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BB13A8AA28EE7F580073CFC2 /* CryptorECC */ = {
+			isa = PBXGroup;
+			children = (
+				BB13A8B328EE7F8B0073CFC2 /* ASN1.swift */,
+				BB13A8AC28EE7F8A0073CFC2 /* Data+Extensions.swift */,
+				BB13A8AF28EE7F8B0073CFC2 /* ECDecryptable.swift */,
+				BB13A8B428EE7F8B0073CFC2 /* ECEncryptable.swift */,
+				BB13A8AB28EE7F8A0073CFC2 /* ECError.swift */,
+				BB13A8AE28EE7F8A0073CFC2 /* ECPrivateKey.swift */,
+				BB13A8B028EE7F8B0073CFC2 /* ECPublicKey.swift */,
+				BB13A8AD28EE7F8A0073CFC2 /* ECSignable.swift */,
+				BB13A8B528EE7F8B0073CFC2 /* ECSignature.swift */,
+				BB13A8B128EE7F8B0073CFC2 /* EllipticCurve.swift */,
+				BB13A8B228EE7F8B0073CFC2 /* SSLPointerTricks.swift */,
+			);
+			path = CryptorECC;
+			sourceTree = "<group>";
+		};
 		BB480C4628ED1D7500958F38 = {
 			isa = PBXGroup;
 			children = (
+				BB13A88B28EE788B0073CFC2 /* Library */,
 				BB480C4B28ED1D7500958F38 /* Shared */,
 				BB480C5A28ED1D7600958F38 /* macOS */,
 				BB480C5428ED1D7600958F38 /* Products */,
+				BB13A8A228EE791C0073CFC2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,6 +164,8 @@
 				BB480C4C28ED1D7500958F38 /* Push_NotifyApp.swift */,
 				BB480C4D28ED1D7500958F38 /* ContentView.swift */,
 				BB480C4E28ED1D7600958F38 /* Assets.xcassets */,
+				BBBBD4DE28ED624A007CE31E /* Payloads.swift */,
+				BBBBD4E128ED6454007CE31E /* Push.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -88,6 +197,7 @@
 				BB480C4F28ED1D7600958F38 /* Sources */,
 				BB480C5028ED1D7600958F38 /* Frameworks */,
 				BB480C5128ED1D7600958F38 /* Resources */,
+				BB13A8A628EE791C0073CFC2 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -105,6 +215,7 @@
 				BB480C5528ED1D7600958F38 /* Sources */,
 				BB480C5628ED1D7600958F38 /* Frameworks */,
 				BB480C5728ED1D7600958F38 /* Resources */,
+				BB13A8A928EE79230073CFC2 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -142,6 +253,8 @@
 				Base,
 			);
 			mainGroup = BB480C4628ED1D7500958F38;
+			packageReferences = (
+			);
 			productRefGroup = BB480C5428ED1D7600958F38 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -176,8 +289,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB13A8BE28EE7F8B0073CFC2 /* ASN1.swift in Sources */,
+				BB13A8BB28EE7F8B0073CFC2 /* ECPublicKey.swift in Sources */,
+				BB13A8B828EE7F8B0073CFC2 /* ECSignable.swift in Sources */,
+				BB13A8B928EE7F8B0073CFC2 /* ECPrivateKey.swift in Sources */,
+				BB13A8C028EE7F8C0073CFC2 /* ECSignature.swift in Sources */,
+				BB13A8BA28EE7F8B0073CFC2 /* ECDecryptable.swift in Sources */,
 				BB480C5E28ED1D7600958F38 /* ContentView.swift in Sources */,
+				BBBBD4E228ED6454007CE31E /* Push.swift in Sources */,
+				BB13A8B628EE7F8B0073CFC2 /* ECError.swift in Sources */,
+				BB13A8BC28EE7F8B0073CFC2 /* EllipticCurve.swift in Sources */,
+				BB13A8BF28EE7F8C0073CFC2 /* ECEncryptable.swift in Sources */,
+				BB13A8BD28EE7F8B0073CFC2 /* SSLPointerTricks.swift in Sources */,
+				BB13A8B728EE7F8B0073CFC2 /* Data+Extensions.swift in Sources */,
 				BB480C5C28ED1D7600958F38 /* Push_NotifyApp.swift in Sources */,
+				BBBBD4DF28ED624A007CE31E /* Payloads.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,7 +312,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB480C5F28ED1D7600958F38 /* ContentView.swift in Sources */,
+				BB13A8C628EE82A20073CFC2 /* ECPrivateKey.swift in Sources */,
+				BB13A8CB28EE82AD0073CFC2 /* SSLPointerTricks.swift in Sources */,
+				BB13A8C728EE82A50073CFC2 /* ECPublicKey.swift in Sources */,
+				BB13A8CA28EE82AB0073CFC2 /* EllipticCurve.swift in Sources */,
+				BBBBD4E328ED6454007CE31E /* Push.swift in Sources */,
 				BB480C5D28ED1D7600958F38 /* Push_NotifyApp.swift in Sources */,
+				BB13A8C228EE82990073CFC2 /* Data+Extensions.swift in Sources */,
+				BBBBD4E028ED624A007CE31E /* Payloads.swift in Sources */,
+				BB13A8C328EE829B0073CFC2 /* ECDecryptable.swift in Sources */,
+				BB13A8C828EE82A70073CFC2 /* ECSignable.swift in Sources */,
+				BB13A8C928EE82A90073CFC2 /* ECSignature.swift in Sources */,
+				BB13A8C128EE82960073CFC2 /* ASN1.swift in Sources */,
+				BB13A8C528EE829F0073CFC2 /* ECError.swift in Sources */,
+				BB13A8C428EE829D0073CFC2 /* ECEncryptable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
