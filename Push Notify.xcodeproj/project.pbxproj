@@ -43,6 +43,8 @@
 		BBBBD4E028ED624A007CE31E /* Payloads.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBD4DE28ED624A007CE31E /* Payloads.swift */; };
 		BBBBD4E228ED6454007CE31E /* Push.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBD4E128ED6454007CE31E /* Push.swift */; };
 		BBBBD4E328ED6454007CE31E /* Push.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBD4E128ED6454007CE31E /* Push.swift */; };
+		BBEFE3A428F1345900124F7B /* PKCS12.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEFE3A328F1345900124F7B /* PKCS12.swift */; };
+		BBEFE3A528F1345B00124F7B /* PKCS12.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEFE3A328F1345900124F7B /* PKCS12.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -91,6 +93,7 @@
 		BB480C5B28ED1D7600958F38 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		BBBBD4DE28ED624A007CE31E /* Payloads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payloads.swift; sourceTree = "<group>"; };
 		BBBBD4E128ED6454007CE31E /* Push.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Push.swift; sourceTree = "<group>"; };
+		BBEFE3A328F1345900124F7B /* PKCS12.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PKCS12.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +119,7 @@
 		BB13A88B28EE788B0073CFC2 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				BB5D9EEC28EFD66100EB7288 /* Pusher */,
 				BB13A8AA28EE7F580073CFC2 /* CryptorECC */,
 			);
 			path = Library;
@@ -185,6 +189,14 @@
 				BB480C5B28ED1D7600958F38 /* macOS.entitlements */,
 			);
 			path = macOS;
+			sourceTree = "<group>";
+		};
+		BB5D9EEC28EFD66100EB7288 /* Pusher */ = {
+			isa = PBXGroup;
+			children = (
+				BBEFE3A328F1345900124F7B /* PKCS12.swift */,
+			);
+			path = Pusher;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -300,6 +312,7 @@
 				BB13A8B628EE7F8B0073CFC2 /* ECError.swift in Sources */,
 				BB13A8BC28EE7F8B0073CFC2 /* EllipticCurve.swift in Sources */,
 				BB13A8BF28EE7F8C0073CFC2 /* ECEncryptable.swift in Sources */,
+				BBEFE3A428F1345900124F7B /* PKCS12.swift in Sources */,
 				BB13A8BD28EE7F8B0073CFC2 /* SSLPointerTricks.swift in Sources */,
 				BB13A8B728EE7F8B0073CFC2 /* Data+Extensions.swift in Sources */,
 				BB480C5C28ED1D7600958F38 /* Push_NotifyApp.swift in Sources */,
@@ -322,6 +335,7 @@
 				BBBBD4E028ED624A007CE31E /* Payloads.swift in Sources */,
 				BB13A8C328EE829B0073CFC2 /* ECDecryptable.swift in Sources */,
 				BB13A8C828EE82A70073CFC2 /* ECSignable.swift in Sources */,
+				BBEFE3A528F1345B00124F7B /* PKCS12.swift in Sources */,
 				BB13A8C928EE82A90073CFC2 /* ECSignature.swift in Sources */,
 				BB13A8C128EE82960073CFC2 /* ASN1.swift in Sources */,
 				BB13A8C528EE829F0073CFC2 /* ECError.swift in Sources */,
