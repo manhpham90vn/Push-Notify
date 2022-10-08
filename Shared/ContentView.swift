@@ -43,6 +43,7 @@ struct ContentView: View {
     @State var message = ""
     @State var serverKey = ""
     @State var fcmToken = ""
+    @State var androidFCMToken = ""
     
     var selectPushTypeView: some View {
         HStack(alignment: .bottom, spacing: 20) {
@@ -415,8 +416,60 @@ struct ContentView: View {
 
             TextEditor(text: $fullText)
             Button("Submit") {
-                let payload = Notification(to: fcmToken, notification: .init(title: title, subtitle: subtitle, body: bodyText))
+                let payload = FCMiOS(to: fcmToken, notification: .init(title: title, subtitle: subtitle, body: bodyText, badge: badge))
                 Task {
+                    do {
+                        fullText = try String(data: JSONEncoder().encode(payload), encoding: .utf8) ?? ""
+                        let statusCode = try await Push.shared.push(serverKey: serverKey, aps: payload)
+                        isOn = true
+                        message = statusCode == 200 ? "Send Success: status code \(statusCode)": "Send Failed: status code \(statusCode)"
+                    } catch let error {
+                        isOn = true
+                        message = "\(error)"
+                    }
+                }
+            }.alert(message, isPresented: $isOn) {
+                Button("OK") {
+                    isOn = false
+                    message = ""
+                }
+            }
+        }
+    }
+    
+    var androidView: some View {
+        VStack(alignment: .center) {
+            
+            Spacer(minLength: 30)
+            
+            HStack {
+                Text("Server key")
+                TextField("Server key", text: $serverKey)
+            }
+            
+            HStack {
+                Text("FCM Token")
+                TextField("FCM Token", text: $androidFCMToken)
+            }
+            
+            Spacer(minLength: 30)
+            
+            HStack(alignment: .center, spacing: 20) {
+                HStack {
+                    Text("Title")
+                    TextField("Title", text: $title)
+                }.frame(minWidth: 0, maxWidth: .infinity)
+                
+                HStack {
+                    Text("Body")
+                    TextField("Body", text: $bodyText)
+                }.frame(minWidth: 0, maxWidth: .infinity)
+            }
+
+            TextEditor(text: $fullText)
+            Button("Submit") {
+                Task {
+                    let payload = FCMAndroid(to: androidFCMToken, notification: .init(title: title, body: bodyText))
                     do {
                         fullText = try String(data: JSONEncoder().encode(payload), encoding: .utf8) ?? ""
                         let statusCode = try await Push.shared.push(serverKey: serverKey, aps: payload)
@@ -441,15 +494,16 @@ struct ContentView: View {
             selectPushTypeView
             if isCheckAPNS {
                 selectAPNSTypeView
-            }
-            if isCheckAuthenticationKey && isCheckAPNS {
-                authenKeyView
-            }
-            if isCheckCertificates && isCheckAPNS {
-                cerView
-            }
-            if isCheckFCM {
+                if isCheckAuthenticationKey {
+                    authenKeyView
+                }
+                if isCheckCertificates {
+                    cerView
+                }
+            } else if isCheckFCM {
                 fcmView
+            } else if isCheckAndroid {
+                androidView
             }
             Spacer()
         }

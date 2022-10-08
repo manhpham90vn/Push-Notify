@@ -39,10 +39,14 @@
 		BB480C5F28ED1D7600958F38 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB480C4D28ED1D7500958F38 /* ContentView.swift */; };
 		BB480C6028ED1D7600958F38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB480C4E28ED1D7600958F38 /* Assets.xcassets */; };
 		BB480C6128ED1D7600958F38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB480C4E28ED1D7600958F38 /* Assets.xcassets */; };
-		BBBBD4DF28ED624A007CE31E /* Payloads.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBD4DE28ED624A007CE31E /* Payloads.swift */; };
-		BBBBD4E028ED624A007CE31E /* Payloads.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBD4DE28ED624A007CE31E /* Payloads.swift */; };
 		BBBBD4E228ED6454007CE31E /* Push.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBD4E128ED6454007CE31E /* Push.swift */; };
 		BBBBD4E328ED6454007CE31E /* Push.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBD4E128ED6454007CE31E /* Push.swift */; };
+		BBCE759028F1CFCF00599AD6 /* APNS.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCE758F28F1CFCF00599AD6 /* APNS.swift */; };
+		BBCE759128F1CFCF00599AD6 /* APNS.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCE758F28F1CFCF00599AD6 /* APNS.swift */; };
+		BBCE759328F1CFEE00599AD6 /* FCM+iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCE759228F1CFEE00599AD6 /* FCM+iOS.swift */; };
+		BBCE759428F1CFEE00599AD6 /* FCM+iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCE759228F1CFEE00599AD6 /* FCM+iOS.swift */; };
+		BBCE759628F1D03B00599AD6 /* FCM+Android.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCE759528F1D03B00599AD6 /* FCM+Android.swift */; };
+		BBCE759728F1D03B00599AD6 /* FCM+Android.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCE759528F1D03B00599AD6 /* FCM+Android.swift */; };
 		BBEFE3A428F1345900124F7B /* PKCS12.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEFE3A328F1345900124F7B /* PKCS12.swift */; };
 		BBEFE3A528F1345B00124F7B /* PKCS12.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEFE3A328F1345900124F7B /* PKCS12.swift */; };
 /* End PBXBuildFile section */
@@ -91,8 +95,10 @@
 		BB480C5328ED1D7600958F38 /* Push Notify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Push Notify.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB480C5928ED1D7600958F38 /* Push Notify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Push Notify.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB480C5B28ED1D7600958F38 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
-		BBBBD4DE28ED624A007CE31E /* Payloads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payloads.swift; sourceTree = "<group>"; };
 		BBBBD4E128ED6454007CE31E /* Push.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Push.swift; sourceTree = "<group>"; };
+		BBCE758F28F1CFCF00599AD6 /* APNS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APNS.swift; sourceTree = "<group>"; };
+		BBCE759228F1CFEE00599AD6 /* FCM+iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FCM+iOS.swift"; sourceTree = "<group>"; };
+		BBCE759528F1D03B00599AD6 /* FCM+Android.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FCM+Android.swift"; sourceTree = "<group>"; };
 		BBEFE3A328F1345900124F7B /* PKCS12.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PKCS12.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -165,10 +171,10 @@
 		BB480C4B28ED1D7500958F38 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				BBCE758D28F1CFA200599AD6 /* Model */,
 				BB480C4C28ED1D7500958F38 /* Push_NotifyApp.swift */,
 				BB480C4D28ED1D7500958F38 /* ContentView.swift */,
 				BB480C4E28ED1D7600958F38 /* Assets.xcassets */,
-				BBBBD4DE28ED624A007CE31E /* Payloads.swift */,
 				BBBBD4E128ED6454007CE31E /* Push.swift */,
 			);
 			path = Shared;
@@ -197,6 +203,16 @@
 				BBEFE3A328F1345900124F7B /* PKCS12.swift */,
 			);
 			path = Pusher;
+			sourceTree = "<group>";
+		};
+		BBCE758D28F1CFA200599AD6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BBCE758F28F1CFCF00599AD6 /* APNS.swift */,
+				BBCE759228F1CFEE00599AD6 /* FCM+iOS.swift */,
+				BBCE759528F1D03B00599AD6 /* FCM+Android.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,6 +321,8 @@
 				BB13A8BB28EE7F8B0073CFC2 /* ECPublicKey.swift in Sources */,
 				BB13A8B828EE7F8B0073CFC2 /* ECSignable.swift in Sources */,
 				BB13A8B928EE7F8B0073CFC2 /* ECPrivateKey.swift in Sources */,
+				BBCE759628F1D03B00599AD6 /* FCM+Android.swift in Sources */,
+				BBCE759328F1CFEE00599AD6 /* FCM+iOS.swift in Sources */,
 				BB13A8C028EE7F8C0073CFC2 /* ECSignature.swift in Sources */,
 				BB13A8BA28EE7F8B0073CFC2 /* ECDecryptable.swift in Sources */,
 				BB480C5E28ED1D7600958F38 /* ContentView.swift in Sources */,
@@ -312,11 +330,11 @@
 				BB13A8B628EE7F8B0073CFC2 /* ECError.swift in Sources */,
 				BB13A8BC28EE7F8B0073CFC2 /* EllipticCurve.swift in Sources */,
 				BB13A8BF28EE7F8C0073CFC2 /* ECEncryptable.swift in Sources */,
+				BBCE759028F1CFCF00599AD6 /* APNS.swift in Sources */,
 				BBEFE3A428F1345900124F7B /* PKCS12.swift in Sources */,
 				BB13A8BD28EE7F8B0073CFC2 /* SSLPointerTricks.swift in Sources */,
 				BB13A8B728EE7F8B0073CFC2 /* Data+Extensions.swift in Sources */,
 				BB480C5C28ED1D7600958F38 /* Push_NotifyApp.swift in Sources */,
-				BBBBD4DF28ED624A007CE31E /* Payloads.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,13 +346,15 @@
 				BB13A8C628EE82A20073CFC2 /* ECPrivateKey.swift in Sources */,
 				BB13A8CB28EE82AD0073CFC2 /* SSLPointerTricks.swift in Sources */,
 				BB13A8C728EE82A50073CFC2 /* ECPublicKey.swift in Sources */,
+				BBCE759728F1D03B00599AD6 /* FCM+Android.swift in Sources */,
+				BBCE759428F1CFEE00599AD6 /* FCM+iOS.swift in Sources */,
 				BB13A8CA28EE82AB0073CFC2 /* EllipticCurve.swift in Sources */,
 				BBBBD4E328ED6454007CE31E /* Push.swift in Sources */,
 				BB480C5D28ED1D7600958F38 /* Push_NotifyApp.swift in Sources */,
 				BB13A8C228EE82990073CFC2 /* Data+Extensions.swift in Sources */,
-				BBBBD4E028ED624A007CE31E /* Payloads.swift in Sources */,
 				BB13A8C328EE829B0073CFC2 /* ECDecryptable.swift in Sources */,
 				BB13A8C828EE82A70073CFC2 /* ECSignable.swift in Sources */,
+				BBCE759128F1CFCF00599AD6 /* APNS.swift in Sources */,
 				BBEFE3A528F1345B00124F7B /* PKCS12.swift in Sources */,
 				BB13A8C928EE82A90073CFC2 /* ECSignature.swift in Sources */,
 				BB13A8C128EE82960073CFC2 /* ASN1.swift in Sources */,

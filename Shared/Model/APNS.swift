@@ -1,8 +1,8 @@
 //
-//  Payloads.swift
+//  APNS.swift
 //  Push Notify
 //
-//  Created by Manh Pham on 05/10/2022.
+//  Created by Manh Pham on 08/10/2022.
 //
 
 import Foundation
@@ -20,9 +20,4 @@ struct Alert: Codable {
     var title: String
     var subtitle: String
     var body: String
-}
-
-struct Notification: Codable {
-    var to: String
-    var notification: Alert
 }
