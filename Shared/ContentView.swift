@@ -42,6 +42,9 @@ struct ContentView: View {
     @State var bodyText: String = "Body"
     @State var password: String = "123456"
 
+    @State var isOn = false
+    @State var message = ""
+    
     var selectPushTypeView: some View {
         HStack(alignment: .bottom, spacing: 20) {
             HStack {
@@ -223,13 +226,21 @@ struct ContentView: View {
                             fullText = try String(data: JSONEncoder().encode(payload), encoding: .utf8) ?? ""
                             let content = try String(contentsOf: file)
                             let statusCode = try await Push.shared.push(env: env, deviceToken: deviceToken, aps: payload, keyID: keyID, teamID: teamID, privateKey: content, bundleID: bundleID)
-                            print(statusCode)
+                            isOn = true
+                            message = statusCode == 200 ? "Send Success: status code \(statusCode)": "Send Failed: status code \(statusCode)"
                         } catch let error {
-                            print(error)
+                            isOn = true
+                            message = "\(error)"
                         }
                     }
                 } else {
-                    print("p8 file not found")
+                    isOn = true
+                    message = "p8 file not found"
+                }
+            }.alert(message, isPresented: $isOn) {
+                Button("OK") {
+                    isOn = false
+                    message = ""
                 }
             }
         }
@@ -280,7 +291,7 @@ struct ContentView: View {
                         }
                         #endif
                     } label: {
-                        Text("Select 12 File")
+                        Text("Select P12 File")
                     }
                 }
 
@@ -336,16 +347,27 @@ struct ContentView: View {
                             fullText = try String(data: JSONEncoder().encode(payload), encoding: .utf8) ?? ""
                             let data = try Data(contentsOf: file)
                             let content = try PKCS12(pkcs12Data: data, password: password)
-                            guard let identity = content.identity else { return }
-                            Push.shared.identity = identity
-                            let statusCode = try await Push.shared.push(env: env, deviceToken: deviceToken, aps: payload, bundleID: bundleID)
-                            print(statusCode)
+                            if let identity = content.identity {
+                                let statusCode = try await Push.shared.push(env: env, deviceToken: deviceToken, aps: payload, bundleID: bundleID, identity: identity)
+                                isOn = true
+                                message = statusCode == 200 ? "Send Success: status code \(statusCode)": "Send Failed: status code \(statusCode)"
+                            } else {
+                                isOn = true
+                                message = "SecIdentity not found"
+                            }
                         } catch let error {
-                            print(error)
+                            isOn = true
+                            message = "\(error)"
                         }
                     }
                 } else {
-                    print("p12 file not found")
+                    isOn = true
+                    message = "p8 file not found"
+                }
+            }.alert(message, isPresented: $isOn) {
+                Button("OK") {
+                    isOn = false
+                    message = ""
                 }
             }
         }

@@ -37,11 +37,12 @@ class PKCS12 {
         guard let dictArray = theItemsNSArray as? [[String: AnyObject]] else {
             throw PKCS12Error.unKnown
         }
-        self.label = PKCS12.parse(key: kSecImportItemLabel, dictArray: dictArray)
-        self.keyID = PKCS12.parse(key: kSecImportItemKeyID, dictArray: dictArray)
-        self.trust = PKCS12.parse(key: kSecImportItemTrust, dictArray: dictArray)
-        self.certChain = PKCS12.parse(key: kSecImportItemCertChain, dictArray: dictArray)
-        self.identity = PKCS12.parse(key: kSecImportItemIdentity, dictArray: dictArray)
+
+        label = PKCS12.parse(key: kSecImportItemLabel, dictArray: dictArray)
+        keyID = PKCS12.parse(key: kSecImportItemKeyID, dictArray: dictArray)
+        trust = PKCS12.parse(key: kSecImportItemTrust, dictArray: dictArray)
+        certChain = PKCS12.parse(key: kSecImportItemCertChain, dictArray: dictArray)
+        identity = PKCS12.parse(key: kSecImportItemIdentity, dictArray: dictArray)
     }
 
     static func parse<T>(key: CFString, dictArray: [[String : AnyObject]]) -> T? {
