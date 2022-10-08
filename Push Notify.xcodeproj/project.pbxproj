@@ -7,21 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BB13A8A428EE791C0073CFC2 /* Alamofire.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB13A8A328EE791C0073CFC2 /* Alamofire.xcframework */; };
-		BB13A8A528EE791C0073CFC2 /* Alamofire.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BB13A8A328EE791C0073CFC2 /* Alamofire.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BB13A8A728EE79230073CFC2 /* Alamofire.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB13A8A328EE791C0073CFC2 /* Alamofire.xcframework */; };
 		BB13A8A828EE79230073CFC2 /* Alamofire.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BB13A8A328EE791C0073CFC2 /* Alamofire.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BB13A8B628EE7F8B0073CFC2 /* ECError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8AB28EE7F8A0073CFC2 /* ECError.swift */; };
-		BB13A8B728EE7F8B0073CFC2 /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8AC28EE7F8A0073CFC2 /* Data+Extensions.swift */; };
-		BB13A8B828EE7F8B0073CFC2 /* ECSignable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8AD28EE7F8A0073CFC2 /* ECSignable.swift */; };
-		BB13A8B928EE7F8B0073CFC2 /* ECPrivateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8AE28EE7F8A0073CFC2 /* ECPrivateKey.swift */; };
-		BB13A8BA28EE7F8B0073CFC2 /* ECDecryptable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8AF28EE7F8B0073CFC2 /* ECDecryptable.swift */; };
-		BB13A8BB28EE7F8B0073CFC2 /* ECPublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8B028EE7F8B0073CFC2 /* ECPublicKey.swift */; };
-		BB13A8BC28EE7F8B0073CFC2 /* EllipticCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8B128EE7F8B0073CFC2 /* EllipticCurve.swift */; };
-		BB13A8BD28EE7F8B0073CFC2 /* SSLPointerTricks.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8B228EE7F8B0073CFC2 /* SSLPointerTricks.swift */; };
-		BB13A8BE28EE7F8B0073CFC2 /* ASN1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8B328EE7F8B0073CFC2 /* ASN1.swift */; };
-		BB13A8BF28EE7F8C0073CFC2 /* ECEncryptable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8B428EE7F8B0073CFC2 /* ECEncryptable.swift */; };
-		BB13A8C028EE7F8C0073CFC2 /* ECSignature.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8B528EE7F8B0073CFC2 /* ECSignature.swift */; };
 		BB13A8C128EE82960073CFC2 /* ASN1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8B328EE7F8B0073CFC2 /* ASN1.swift */; };
 		BB13A8C228EE82990073CFC2 /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8AC28EE7F8A0073CFC2 /* Data+Extensions.swift */; };
 		BB13A8C328EE829B0073CFC2 /* ECDecryptable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8AF28EE7F8B0073CFC2 /* ECDecryptable.swift */; };
@@ -33,36 +20,18 @@
 		BB13A8C928EE82A90073CFC2 /* ECSignature.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8B528EE7F8B0073CFC2 /* ECSignature.swift */; };
 		BB13A8CA28EE82AB0073CFC2 /* EllipticCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8B128EE7F8B0073CFC2 /* EllipticCurve.swift */; };
 		BB13A8CB28EE82AD0073CFC2 /* SSLPointerTricks.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8B228EE7F8B0073CFC2 /* SSLPointerTricks.swift */; };
-		BB480C5C28ED1D7600958F38 /* Push_NotifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB480C4C28ED1D7500958F38 /* Push_NotifyApp.swift */; };
 		BB480C5D28ED1D7600958F38 /* Push_NotifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB480C4C28ED1D7500958F38 /* Push_NotifyApp.swift */; };
-		BB480C5E28ED1D7600958F38 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB480C4D28ED1D7500958F38 /* ContentView.swift */; };
 		BB480C5F28ED1D7600958F38 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB480C4D28ED1D7500958F38 /* ContentView.swift */; };
-		BB480C6028ED1D7600958F38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB480C4E28ED1D7600958F38 /* Assets.xcassets */; };
 		BB480C6128ED1D7600958F38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB480C4E28ED1D7600958F38 /* Assets.xcassets */; };
-		BBBBD4E228ED6454007CE31E /* Push.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBD4E128ED6454007CE31E /* Push.swift */; };
 		BBBBD4E328ED6454007CE31E /* Push.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBD4E128ED6454007CE31E /* Push.swift */; };
-		BBCE759028F1CFCF00599AD6 /* APNS.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCE758F28F1CFCF00599AD6 /* APNS.swift */; };
 		BBCE759128F1CFCF00599AD6 /* APNS.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCE758F28F1CFCF00599AD6 /* APNS.swift */; };
-		BBCE759328F1CFEE00599AD6 /* FCM+iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCE759228F1CFEE00599AD6 /* FCM+iOS.swift */; };
 		BBCE759428F1CFEE00599AD6 /* FCM+iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCE759228F1CFEE00599AD6 /* FCM+iOS.swift */; };
-		BBCE759628F1D03B00599AD6 /* FCM+Android.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCE759528F1D03B00599AD6 /* FCM+Android.swift */; };
 		BBCE759728F1D03B00599AD6 /* FCM+Android.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCE759528F1D03B00599AD6 /* FCM+Android.swift */; };
-		BBEFE3A428F1345900124F7B /* PKCS12.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEFE3A328F1345900124F7B /* PKCS12.swift */; };
+		BBCE759A28F1D38600599AD6 /* Simulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCE759828F1D38600599AD6 /* Simulator.swift */; };
 		BBEFE3A528F1345B00124F7B /* PKCS12.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEFE3A328F1345900124F7B /* PKCS12.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		BB13A8A628EE791C0073CFC2 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				BB13A8A528EE791C0073CFC2 /* Alamofire.xcframework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BB13A8A928EE79230073CFC2 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -92,25 +61,17 @@
 		BB480C4C28ED1D7500958F38 /* Push_NotifyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Push_NotifyApp.swift; sourceTree = "<group>"; };
 		BB480C4D28ED1D7500958F38 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BB480C4E28ED1D7600958F38 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		BB480C5328ED1D7600958F38 /* Push Notify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Push Notify.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB480C5928ED1D7600958F38 /* Push Notify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Push Notify.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB480C5B28ED1D7600958F38 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		BBBBD4E128ED6454007CE31E /* Push.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Push.swift; sourceTree = "<group>"; };
 		BBCE758F28F1CFCF00599AD6 /* APNS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APNS.swift; sourceTree = "<group>"; };
 		BBCE759228F1CFEE00599AD6 /* FCM+iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FCM+iOS.swift"; sourceTree = "<group>"; };
 		BBCE759528F1D03B00599AD6 /* FCM+Android.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FCM+Android.swift"; sourceTree = "<group>"; };
+		BBCE759828F1D38600599AD6 /* Simulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simulator.swift; sourceTree = "<group>"; };
 		BBEFE3A328F1345900124F7B /* PKCS12.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PKCS12.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		BB480C5028ED1D7600958F38 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BB13A8A428EE791C0073CFC2 /* Alamofire.xcframework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BB480C5628ED1D7600958F38 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -161,40 +122,30 @@
 			isa = PBXGroup;
 			children = (
 				BB13A88B28EE788B0073CFC2 /* Library */,
-				BB480C4B28ED1D7500958F38 /* Shared */,
-				BB480C5A28ED1D7600958F38 /* macOS */,
+				BB480C4B28ED1D7500958F38 /* Source */,
 				BB480C5428ED1D7600958F38 /* Products */,
 				BB13A8A228EE791C0073CFC2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		BB480C4B28ED1D7500958F38 /* Shared */ = {
+		BB480C4B28ED1D7500958F38 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				BBCE759C28F1D58E00599AD6 /* Service */,
+				BBCE759B28F1D58A00599AD6 /* View */,
 				BBCE758D28F1CFA200599AD6 /* Model */,
-				BB480C4C28ED1D7500958F38 /* Push_NotifyApp.swift */,
-				BB480C4D28ED1D7500958F38 /* ContentView.swift */,
 				BB480C4E28ED1D7600958F38 /* Assets.xcassets */,
-				BBBBD4E128ED6454007CE31E /* Push.swift */,
+				BB480C5B28ED1D7600958F38 /* macOS.entitlements */,
 			);
-			path = Shared;
+			path = Source;
 			sourceTree = "<group>";
 		};
 		BB480C5428ED1D7600958F38 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BB480C5328ED1D7600958F38 /* Push Notify.app */,
 				BB480C5928ED1D7600958F38 /* Push Notify.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		BB480C5A28ED1D7600958F38 /* macOS */ = {
-			isa = PBXGroup;
-			children = (
-				BB480C5B28ED1D7600958F38 /* macOS.entitlements */,
-			);
-			path = macOS;
 			sourceTree = "<group>";
 		};
 		BB5D9EEC28EFD66100EB7288 /* Pusher */ = {
@@ -211,31 +162,31 @@
 				BBCE758F28F1CFCF00599AD6 /* APNS.swift */,
 				BBCE759228F1CFEE00599AD6 /* FCM+iOS.swift */,
 				BBCE759528F1D03B00599AD6 /* FCM+Android.swift */,
+				BBCE759828F1D38600599AD6 /* Simulator.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		BBCE759B28F1D58A00599AD6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BB480C4C28ED1D7500958F38 /* Push_NotifyApp.swift */,
+				BB480C4D28ED1D7500958F38 /* ContentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BBCE759C28F1D58E00599AD6 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				BBBBD4E128ED6454007CE31E /* Push.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BB480C5228ED1D7600958F38 /* Push Notify (iOS) */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BB480C6428ED1D7600958F38 /* Build configuration list for PBXNativeTarget "Push Notify (iOS)" */;
-			buildPhases = (
-				BB480C4F28ED1D7600958F38 /* Sources */,
-				BB480C5028ED1D7600958F38 /* Frameworks */,
-				BB480C5128ED1D7600958F38 /* Resources */,
-				BB13A8A628EE791C0073CFC2 /* Embed Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Push Notify (iOS)";
-			productName = "Push Notify (iOS)";
-			productReference = BB480C5328ED1D7600958F38 /* Push Notify.app */;
-			productType = "com.apple.product-type.application";
-		};
 		BB480C5828ED1D7600958F38 /* Push Notify (macOS) */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BB480C6728ED1D7600958F38 /* Build configuration list for PBXNativeTarget "Push Notify (macOS)" */;
@@ -264,9 +215,6 @@
 				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
-					BB480C5228ED1D7600958F38 = {
-						CreatedOnToolsVersion = 13.2.1;
-					};
 					BB480C5828ED1D7600958F38 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
@@ -287,21 +235,12 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BB480C5228ED1D7600958F38 /* Push Notify (iOS) */,
 				BB480C5828ED1D7600958F38 /* Push Notify (macOS) */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		BB480C5128ED1D7600958F38 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BB480C6028ED1D7600958F38 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BB480C5728ED1D7600958F38 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -313,31 +252,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		BB480C4F28ED1D7600958F38 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BB13A8BE28EE7F8B0073CFC2 /* ASN1.swift in Sources */,
-				BB13A8BB28EE7F8B0073CFC2 /* ECPublicKey.swift in Sources */,
-				BB13A8B828EE7F8B0073CFC2 /* ECSignable.swift in Sources */,
-				BB13A8B928EE7F8B0073CFC2 /* ECPrivateKey.swift in Sources */,
-				BBCE759628F1D03B00599AD6 /* FCM+Android.swift in Sources */,
-				BBCE759328F1CFEE00599AD6 /* FCM+iOS.swift in Sources */,
-				BB13A8C028EE7F8C0073CFC2 /* ECSignature.swift in Sources */,
-				BB13A8BA28EE7F8B0073CFC2 /* ECDecryptable.swift in Sources */,
-				BB480C5E28ED1D7600958F38 /* ContentView.swift in Sources */,
-				BBBBD4E228ED6454007CE31E /* Push.swift in Sources */,
-				BB13A8B628EE7F8B0073CFC2 /* ECError.swift in Sources */,
-				BB13A8BC28EE7F8B0073CFC2 /* EllipticCurve.swift in Sources */,
-				BB13A8BF28EE7F8C0073CFC2 /* ECEncryptable.swift in Sources */,
-				BBCE759028F1CFCF00599AD6 /* APNS.swift in Sources */,
-				BBEFE3A428F1345900124F7B /* PKCS12.swift in Sources */,
-				BB13A8BD28EE7F8B0073CFC2 /* SSLPointerTricks.swift in Sources */,
-				BB13A8B728EE7F8B0073CFC2 /* Data+Extensions.swift in Sources */,
-				BB480C5C28ED1D7600958F38 /* Push_NotifyApp.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BB480C5528ED1D7600958F38 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -355,6 +269,7 @@
 				BB13A8C328EE829B0073CFC2 /* ECDecryptable.swift in Sources */,
 				BB13A8C828EE82A70073CFC2 /* ECSignable.swift in Sources */,
 				BBCE759128F1CFCF00599AD6 /* APNS.swift in Sources */,
+				BBCE759A28F1D38600599AD6 /* Simulator.swift in Sources */,
 				BBEFE3A528F1345B00124F7B /* PKCS12.swift in Sources */,
 				BB13A8C928EE82A90073CFC2 /* ECSignature.swift in Sources */,
 				BB13A8C128EE82960073CFC2 /* ASN1.swift in Sources */,
@@ -477,71 +392,12 @@
 			};
 			name = Release;
 		};
-		BB480C6528ED1D7600958F38 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.manhpham.Push-Notify";
-				PRODUCT_NAME = "Push Notify";
-				SDKROOT = iphoneos;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		BB480C6628ED1D7600958F38 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.manhpham.Push-Notify";
-				PRODUCT_NAME = "Push Notify";
-				SDKROOT = iphoneos;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 		BB480C6828ED1D7600958F38 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Source/macOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -567,7 +423,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Source/macOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -596,15 +452,6 @@
 			buildConfigurations = (
 				BB480C6228ED1D7600958F38 /* Debug */,
 				BB480C6328ED1D7600958F38 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BB480C6428ED1D7600958F38 /* Build configuration list for PBXNativeTarget "Push Notify (iOS)" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BB480C6528ED1D7600958F38 /* Debug */,
-				BB480C6628ED1D7600958F38 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

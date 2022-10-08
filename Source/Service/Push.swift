@@ -93,4 +93,23 @@ class Push: NSObject {
         let request = AF.request(url, method: .post, parameters: aps, encoder: JSONParameterEncoder.default, headers: httpHeaders).serializingDecodable(Empty.self)
         return await request.response.response?.statusCode ?? 0
     }
+    
+    func push(aps: Simulator, bundleID: String) throws -> Int {
+        let task = Process()
+        let errorPipe = Pipe()
+        let outputPipe = Pipe()
+        let encode = JSONEncoder()
+        encode.outputFormatting = .prettyPrinted
+        let data = try encode.encode(aps)
+        let string = String(data: data, encoding: .utf8) ?? ""
+        let command = "printf '\(string)' | xcrun simctl push booted \(bundleID) -"
+        task.standardError = errorPipe
+        task.standardOutput = outputPipe
+        task.arguments = ["-c", command]
+        task.executableURL = URL(fileURLWithPath: "/bin/zsh")
+        
+        try task.run()
+        task.waitUntilExit()
+        return Int(task.terminationStatus)
+    }
 }

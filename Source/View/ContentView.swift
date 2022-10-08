@@ -9,15 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
 
-    #if !os(macOS)
-    var body: some View {
-        main.navigationBarTitleDisplayMode(.inline).padding(.all, 20)
-    }
-    #else
     var body: some View {
         main.frame(minWidth: 600, minHeight: 500).padding(.all, 20)
     }
-    #endif
 
     @State var isCheckAPNS = true
     @State var isCheckFCM = false
@@ -151,7 +145,6 @@ struct ContentView: View {
                 HStack(alignment: .center) {
                     Text(fileP8?.lastPathComponent ?? "Filename")
                     Button {
-                        #if os(macOS)
                         let panel = NSOpenPanel()
                         panel.allowedFileTypes = ["p8"]
                         panel.allowsMultipleSelection = false
@@ -163,7 +156,6 @@ struct ContentView: View {
                             let url = panel.url {
                             self.fileP8 = url
                         }
-                        #endif
                     } label: {
                         Text("Select P8 File")
                     }
@@ -277,7 +269,6 @@ struct ContentView: View {
                 HStack {
                     Text(fileP12?.lastPathComponent ?? "Filename")
                     Button {
-                        #if os(macOS)
                         let panel = NSOpenPanel()
                         panel.allowedFileTypes = ["p12"]
                         panel.allowsMultipleSelection = false
@@ -289,7 +280,6 @@ struct ContentView: View {
                             let url = panel.url {
                             self.fileP12 = url
                         }
-                        #endif
                     } label: {
                         Text("Select P12 File")
                     }
@@ -489,6 +479,61 @@ struct ContentView: View {
         }
     }
     
+    var simulatorView: some View {
+        VStack(alignment: .center) {
+
+            Spacer(minLength: 30)
+
+            HStack {
+                Text("Bundle ID")
+                TextField("Bundle ID", text: $bundleID)
+            }
+            
+            HStack(alignment: .center, spacing: 20) {
+                HStack {
+                    Text("Badge")
+                    TextField("Badge", text: $badge)
+                }.frame(minWidth: 0, maxWidth: .infinity)
+                
+                HStack {
+                    Text("Title")
+                    TextField("Title", text: $title)
+                }.frame(minWidth: 0, maxWidth: .infinity)
+            }
+
+            HStack(alignment: .center, spacing: 20) {
+                HStack {
+                    Text("Sub title")
+                    TextField("Sub title", text: $subtitle)
+                }.frame(minWidth: 0, maxWidth: .infinity)
+                
+                HStack {
+                    Text("Body")
+                    TextField("Body", text: $bodyText)
+                }.frame(minWidth: 0, maxWidth: .infinity)
+            }
+
+            TextEditor(text: $fullText)
+            Button("Submit") {
+                let payload = Simulator(bundle: bundleID, aps: .init(badge: Int(badge) ?? 0, alert: .init(title: title, subtitle: subtitle, body: bodyText)))
+                do {
+                    fullText = try String(data: JSONEncoder().encode(payload), encoding: .utf8) ?? ""
+                    let statusCode = try Push.shared.push(aps: payload, bundleID: bundleID)
+                    isOn = true
+                    message = statusCode == 0 ? "Send Success: status code \(statusCode)": "Send Failed: status code \(statusCode)"
+                } catch let error {
+                    isOn = true
+                    message = "\(error)"
+                }
+            }.alert(message, isPresented: $isOn) {
+                Button("OK") {
+                    isOn = false
+                    message = ""
+                }
+            }
+        }
+    }
+    
     var main: some View {
         VStack {
             selectPushTypeView
@@ -504,6 +549,8 @@ struct ContentView: View {
                 fcmView
             } else if isCheckAndroid {
                 androidView
+            } else if isCheckSimulator {
+                simulatorView
             }
             Spacer()
         }
