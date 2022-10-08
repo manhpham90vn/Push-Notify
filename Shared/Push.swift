@@ -41,6 +41,7 @@ class Push: NSObject {
         let ecPrivateKey = try ECPrivateKey(key: privateKey)
         let signature = try unsignedJWT.sign(with: ecPrivateKey)
         let token = "\(unsignedJWT).\(signature.asn1.base64EncodedString())"
+
         let url = env.url + deviceToken
         let bearerToken = HTTPHeader.authorization(bearerToken: token)
         let apnsTopic = HTTPHeader(name: "apns-topic", value: bundleID)

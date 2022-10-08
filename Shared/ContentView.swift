@@ -362,7 +362,7 @@ struct ContentView: View {
                     }
                 } else {
                     isOn = true
-                    message = "p8 file not found"
+                    message = "p12 file not found"
                 }
             }.alert(message, isPresented: $isOn) {
                 Button("OK") {
