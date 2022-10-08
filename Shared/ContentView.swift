@@ -23,27 +23,26 @@ struct ContentView: View {
     @State var isCheckFCM = false
     @State var isCheckAndroid = false
     @State var isCheckSimulator = false
-
     @State var isCheckAuthenticationKey = true
     @State var isCheckCertificates = false
     @State var isCheckProduction = false
     @State var isCHeckSanbox = true
-
     @State var fileP8: URL?
     @State var fileP12: URL?
-    @State var keyID = "M48UHK248C"
-    @State var teamID = "UPJRMYQ38F"
-    @State var bundleID = "com.manhpham.myapp.debug"
-    @State var deviceToken = "ec8c6fc31b3a7f7455607a0dedb42b00593715348aa9e578ff5b78866a488a59"
+    @State var keyID = ""
+    @State var teamID = ""
+    @State var bundleID = ""
+    @State var deviceToken = ""
     @State var fullText: String = ""
-    @State var badge: String = "1"
-    @State var title: String = "Hello"
-    @State var subtitle: String = "Sub title"
-    @State var bodyText: String = "Body"
-    @State var password: String = "123456"
-
+    @State var badge: String = ""
+    @State var title: String = ""
+    @State var subtitle: String = ""
+    @State var bodyText: String = ""
+    @State var password: String = ""
     @State var isOn = false
     @State var message = ""
+    @State var serverKey = ""
+    @State var fcmToken = ""
     
     var selectPushTypeView: some View {
         HStack(alignment: .bottom, spacing: 20) {
@@ -373,6 +372,70 @@ struct ContentView: View {
         }
     }
 
+    var fcmView: some View {
+        VStack(alignment: .center) {
+            
+            Spacer(minLength: 30)
+            
+            HStack {
+                Text("Server key")
+                TextField("Server key", text: $serverKey)
+            }
+            
+            HStack {
+                Text("FCM Token")
+                TextField("FCM Token", text: $fcmToken)
+            }
+            
+            Spacer(minLength: 30)
+            
+            HStack(alignment: .center, spacing: 20) {
+                HStack {
+                    Text("Badge")
+                    TextField("Badge", text: $badge)
+                }.frame(minWidth: 0, maxWidth: .infinity)
+                
+                HStack {
+                    Text("Title")
+                    TextField("Title", text: $title)
+                }.frame(minWidth: 0, maxWidth: .infinity)
+            }
+
+            HStack(alignment: .center, spacing: 20) {
+                HStack {
+                    Text("Sub title")
+                    TextField("Sub title", text: $subtitle)
+                }.frame(minWidth: 0, maxWidth: .infinity)
+                
+                HStack {
+                    Text("Body")
+                    TextField("Body", text: $bodyText)
+                }.frame(minWidth: 0, maxWidth: .infinity)
+            }
+
+            TextEditor(text: $fullText)
+            Button("Submit") {
+                let payload = Notification(to: fcmToken, notification: .init(title: title, subtitle: subtitle, body: bodyText))
+                Task {
+                    do {
+                        fullText = try String(data: JSONEncoder().encode(payload), encoding: .utf8) ?? ""
+                        let statusCode = try await Push.shared.push(serverKey: serverKey, aps: payload)
+                        isOn = true
+                        message = statusCode == 200 ? "Send Success: status code \(statusCode)": "Send Failed: status code \(statusCode)"
+                    } catch let error {
+                        isOn = true
+                        message = "\(error)"
+                    }
+                }
+            }.alert(message, isPresented: $isOn) {
+                Button("OK") {
+                    isOn = false
+                    message = ""
+                }
+            }
+        }
+    }
+    
     var main: some View {
         VStack {
             selectPushTypeView
@@ -384,6 +447,9 @@ struct ContentView: View {
             }
             if isCheckCertificates && isCheckAPNS {
                 cerView
+            }
+            if isCheckFCM {
+                fcmView
             }
             Spacer()
         }

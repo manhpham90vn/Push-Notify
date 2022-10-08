@@ -21,3 +21,8 @@ struct Alert: Codable {
     var subtitle: String
     var body: String
 }
+
+struct Notification: Codable {
+    var to: String
+    var notification: Alert
+}

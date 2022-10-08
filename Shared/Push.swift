@@ -77,4 +77,12 @@ class Push: NSObject {
         }
         throw PushError.unknown
     }
+    
+    func push(serverKey: String, aps: Notification) async throws -> Int {
+        let url = "https://fcm.googleapis.com/fcm/send"
+        let token = HTTPHeader.authorization("key=\(serverKey)")
+        let httpHeaders = HTTPHeaders([token])
+        let request = AF.request(url, method: .post, parameters: aps, encoder: JSONParameterEncoder.default, headers: httpHeaders).serializingDecodable(Empty.self)
+        return await request.response.response?.statusCode ?? 0
+    }
 }
