@@ -23,12 +23,16 @@ enum APNSENV {
     }
 }
 
+enum PushError: Error {
+    case unknown
+}
+
 class Push: NSObject {
-    
+
     static let shared = Push()
-    
+
     var identity: SecIdentity?
-    
+
     func push(env: APNSENV, deviceToken: String, aps: Payload, keyID: String, teamID: String, privateKey: String, bundleID: String) async throws -> Int {
         let iat = UInt64(Date().timeIntervalSince1970)
         let header: [String: String] = ["alg": "ES256", "typ": "JWT", "kid": keyID]
@@ -46,40 +50,32 @@ class Push: NSObject {
         let request = AF.request(url, method: .post, parameters: aps, encoder: JSONParameterEncoder.default, headers: httpHeaders).serializingDecodable(Empty.self)
         return await request.response.response?.statusCode ?? 0
     }
-    
+
     func push(env: APNSENV, deviceToken: String, aps: Payload, bundleID: String) async throws -> Int {
         let rootQueue = DispatchQueue(label: "com.manhpham.Push-Notify")
         let queue = OperationQueue()
         queue.maxConcurrentOperationCount = 1
         queue.underlyingQueue = rootQueue
         let delegate = SessionDelegate()
-        let urlSession = URLSession(configuration: .ephemeral, delegate: self, delegateQueue: queue)
+        let urlSession = URLSession(configuration: .ephemeral, delegate: delegate, delegateQueue: queue)
         let session = Session(session: urlSession, delegate: delegate, rootQueue: rootQueue)
         let url = env.url + deviceToken
         let apnsTopic = HTTPHeader(name: "apns-topic", value: bundleID)
         let httpHeaders = HTTPHeaders([apnsTopic])
-        let request = session.request(url, method: .post, parameters: aps, encoder: JSONParameterEncoder.default, headers: httpHeaders).serializingDecodable(Empty.self)
-        return await request.response.response?.statusCode ?? 0
-    }
-}
-
-extension Push: URLSessionDelegate {
-    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-        guard let identity = identity else {
-            return
+        if let identity = identity {
+            var certificate: SecCertificate?
+            SecIdentityCopyCertificate(identity, &certificate)
+            if let cert = certificate {
+                let cred = URLCredential(identity: identity, certificates: [cert], persistence: .forSession)
+                certificate = nil
+                
+                let request = session.request(url, method: .post, parameters: aps, encoder: JSONParameterEncoder.default, headers: httpHeaders)
+                    .authenticate(with: cred)
+                    .serializingDecodable(Empty.self)
+                
+                return await request.response.response?.statusCode ?? 0
+            }
         }
-        var certificate: SecCertificate?
-
-        SecIdentityCopyCertificate(identity, &certificate)
-
-        guard let cert = certificate else {
-            return
-        }
-
-        let cred = URLCredential(identity: identity, certificates: [cert], persistence: .forSession)
-
-        certificate = nil
-
-        completionHandler(.useCredential, cred)
+        throw PushError.unknown
     }
 }

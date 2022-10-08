@@ -19,7 +19,7 @@ class PKCS12 {
     let trust: SecTrust?
     let certChain: [SecTrust]?
     let identity: SecIdentity?
-    
+
     public init(pkcs12Data: Data, password: String) throws {
         let importPasswordOption: NSDictionary = [kSecImportExportPassphrase as NSString: password]
         var items: CFArray?
@@ -37,14 +37,14 @@ class PKCS12 {
         guard let dictArray = theItemsNSArray as? [[String: AnyObject]] else {
             throw PKCS12Error.unKnown
         }
-        self.label = PKCS12.f(key: kSecImportItemLabel, dictArray: dictArray)
-        self.keyID = PKCS12.f(key: kSecImportItemKeyID, dictArray: dictArray)
-        self.trust = PKCS12.f(key: kSecImportItemTrust, dictArray: dictArray)
-        self.certChain = PKCS12.f(key: kSecImportItemCertChain, dictArray: dictArray)
-        self.identity = PKCS12.f(key: kSecImportItemIdentity, dictArray: dictArray)
+        self.label = PKCS12.parse(key: kSecImportItemLabel, dictArray: dictArray)
+        self.keyID = PKCS12.parse(key: kSecImportItemKeyID, dictArray: dictArray)
+        self.trust = PKCS12.parse(key: kSecImportItemTrust, dictArray: dictArray)
+        self.certChain = PKCS12.parse(key: kSecImportItemCertChain, dictArray: dictArray)
+        self.identity = PKCS12.parse(key: kSecImportItemIdentity, dictArray: dictArray)
     }
-    
-    static func f<T>(key: CFString, dictArray: [[String : AnyObject]]) -> T? {
+
+    static func parse<T>(key: CFString, dictArray: [[String : AnyObject]]) -> T? {
         for dict in dictArray {
             if let value = dict[key as String] as? T {
                 return value

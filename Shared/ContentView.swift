@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    
+
     #if !os(macOS)
     var body: some View {
         main.navigationBarTitleDisplayMode(.inline).padding(.all, 20)
@@ -18,17 +18,17 @@ struct ContentView: View {
         main.frame(minWidth: 600, minHeight: 500).padding(.all, 20)
     }
     #endif
-        
+
     @State var isCheckAPNS = true
     @State var isCheckFCM = false
     @State var isCheckAndroid = false
     @State var isCheckSimulator = false
-    
+
     @State var isCheckAuthenticationKey = true
     @State var isCheckCertificates = false
     @State var isCheckProduction = false
     @State var isCHeckSanbox = true
-    
+
     @State var fileP8: URL?
     @State var fileP12: URL?
     @State var keyID = "M48UHK248C"
@@ -41,7 +41,7 @@ struct ContentView: View {
     @State var subtitle: String = "Sub title"
     @State var bodyText: String = "Body"
     @State var password: String = "123456"
-        
+
     var selectPushTypeView: some View {
         HStack(alignment: .bottom, spacing: 20) {
             HStack {
@@ -55,7 +55,7 @@ struct ContentView: View {
                 }
                 Text("APNS")
             }
-            
+
             HStack {
                 Button {
                     isCheckFCM = true
@@ -67,7 +67,7 @@ struct ContentView: View {
                 }
                 Text("FCM")
             }
-            
+
             HStack {
                 Button {
                     isCheckAPNS = false
@@ -79,7 +79,7 @@ struct ContentView: View {
                 }
                 Text("Android")
             }
-            
+
             HStack {
                 Button {
                     isCheckAPNS = false
@@ -93,7 +93,7 @@ struct ContentView: View {
             }
         }
     }
-    
+
     var selectAPNSTypeView: some View {
         HStack {
             HStack {
@@ -105,7 +105,7 @@ struct ContentView: View {
                 }
                 Text("Authentication Key")
             }
-            
+
             HStack {
                 Button {
                     isCheckAuthenticationKey = false
@@ -117,7 +117,7 @@ struct ContentView: View {
             }
         }
     }
-    
+
     var authenKeyView: some View {
         VStack {
             HStack {
@@ -130,7 +130,7 @@ struct ContentView: View {
                     }
                     Text("Production")
                 }
-                
+
                 HStack {
                     Button {
                         isCheckProduction = false
@@ -141,9 +141,9 @@ struct ContentView: View {
                     Text("Sanbox")
                 }
             }
-            
+
             Spacer(minLength: 30)
-            
+
             VStack(alignment: .leading) {
                 HStack(alignment: .center) {
                     Text(fileP8?.lastPathComponent ?? "Filename")
@@ -155,7 +155,7 @@ struct ContentView: View {
                         panel.canChooseDirectories = false
                         panel.canCreateDirectories = false
                         panel.title = "Select P8 file"
-                        
+
                         if panel.runModal() == .OK,
                             let url = panel.url {
                             self.fileP8 = url
@@ -165,22 +165,22 @@ struct ContentView: View {
                         Text("Select P8 File")
                     }
                 }
-                
+
                 HStack {
                     Text("Key ID")
                     TextField("Key ID", text: $keyID)
                 }
-                
+
                 HStack {
                     Text("Team ID")
                     TextField("Team ID", text: $teamID)
                 }
-                
+
                 HStack {
                     Text("Bundle ID")
                     TextField("Bundle ID", text: $bundleID)
                 }
-                
+
                 HStack {
                     Text("Device Token")
                     TextField("Device Token", text: $deviceToken)
@@ -188,31 +188,31 @@ struct ContentView: View {
             }
 
             Spacer(minLength: 30)
-            
+
             HStack(alignment: .center, spacing: 20) {
                 HStack {
                     Text("Badge")
                     TextField("Badge", text: $badge)
                 }.frame(minWidth: 0, maxWidth: .infinity)
-                
+
                 HStack {
                     Text("Title")
                     TextField("Title", text: $title)
                 }.frame(minWidth: 0, maxWidth: .infinity)
             }
-            
+
             HStack(alignment: .center, spacing: 20) {
                 HStack {
                     Text("Sub title")
                     TextField("Sub title", text: $subtitle)
                 }.frame(minWidth: 0, maxWidth: .infinity)
-                
+
                 HStack {
                     Text("Body")
                     TextField("Body", text: $bodyText)
                 }.frame(minWidth: 0, maxWidth: .infinity)
             }
-                                
+
             TextEditor(text: $fullText)
             Button("Submit") {
                 let env = isCheckProduction ? APNSENV.production : APNSENV.sanbox
@@ -234,7 +234,7 @@ struct ContentView: View {
             }
         }
     }
-    
+
     var cerView: some View {
         VStack {
             
@@ -248,7 +248,7 @@ struct ContentView: View {
                     }
                     Text("Production")
                 }
-                
+
                 HStack {
                     Button {
                         isCheckProduction = false
@@ -259,7 +259,7 @@ struct ContentView: View {
                     Text("Sanbox")
                 }
             }
-            
+
             Spacer(minLength: 30)
             
             VStack(alignment: .leading) {
@@ -273,7 +273,7 @@ struct ContentView: View {
                         panel.canChooseDirectories = false
                         panel.canCreateDirectories = false
                         panel.title = "Select P12 file"
-                        
+
                         if panel.runModal() == .OK,
                             let url = panel.url {
                             self.fileP12 = url
@@ -288,7 +288,7 @@ struct ContentView: View {
                     Text("Password")
                     TextField("Password", text: $password)
                 }
-                
+
                 HStack {
                     Text("Bundle ID")
                     TextField("Bundle ID", text: $bundleID)
@@ -299,7 +299,7 @@ struct ContentView: View {
                     TextField("Device Token", text: $deviceToken)
                 }
             }
-            
+
             Spacer(minLength: 30)
             
             HStack(alignment: .center, spacing: 20) {
@@ -313,7 +313,7 @@ struct ContentView: View {
                     TextField("Title", text: $title)
                 }.frame(minWidth: 0, maxWidth: .infinity)
             }
-            
+
             HStack(alignment: .center, spacing: 20) {
                 HStack {
                     Text("Sub title")
@@ -325,7 +325,7 @@ struct ContentView: View {
                     TextField("Body", text: $bodyText)
                 }.frame(minWidth: 0, maxWidth: .infinity)
             }
-                                
+
             TextEditor(text: $fullText)
             Button("Submit") {
                 let env = isCheckProduction ? APNSENV.production : APNSENV.sanbox
@@ -350,7 +350,7 @@ struct ContentView: View {
             }
         }
     }
-    
+
     var main: some View {
         VStack {
             selectPushTypeView
