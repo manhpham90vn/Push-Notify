@@ -187,9 +187,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BB480C5828ED1D7600958F38 /* Push Notify (macOS) */ = {
+		BB480C5828ED1D7600958F38 /* Push Notify */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BB480C6728ED1D7600958F38 /* Build configuration list for PBXNativeTarget "Push Notify (macOS)" */;
+			buildConfigurationList = BB480C6728ED1D7600958F38 /* Build configuration list for PBXNativeTarget "Push Notify" */;
 			buildPhases = (
 				BB480C5528ED1D7600958F38 /* Sources */,
 				BB480C5628ED1D7600958F38 /* Frameworks */,
@@ -200,7 +200,7 @@
 			);
 			dependencies = (
 			);
-			name = "Push Notify (macOS)";
+			name = "Push Notify";
 			productName = "Push Notify (macOS)";
 			productReference = BB480C5928ED1D7600958F38 /* Push Notify.app */;
 			productType = "com.apple.product-type.application";
@@ -235,7 +235,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BB480C5828ED1D7600958F38 /* Push Notify (macOS) */,
+				BB480C5828ED1D7600958F38 /* Push Notify */,
 			);
 		};
 /* End PBXProject section */
@@ -402,8 +402,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = UPJRMYQ38F;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -429,8 +431,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = UPJRMYQ38F;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -458,7 +462,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BB480C6728ED1D7600958F38 /* Build configuration list for PBXNativeTarget "Push Notify (macOS)" */ = {
+		BB480C6728ED1D7600958F38 /* Build configuration list for PBXNativeTarget "Push Notify" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BB480C6828ED1D7600958F38 /* Debug */,

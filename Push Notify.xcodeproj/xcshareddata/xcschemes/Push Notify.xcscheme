@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BB480C5828ED1D7600958F38"
                BuildableName = "Push Notify.app"
-               BlueprintName = "Push Notify (macOS)"
+               BlueprintName = "Push Notify"
                ReferencedContainer = "container:Push Notify.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,7 +46,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BB480C5828ED1D7600958F38"
             BuildableName = "Push Notify.app"
-            BlueprintName = "Push Notify (macOS)"
+            BlueprintName = "Push Notify"
             ReferencedContainer = "container:Push Notify.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -63,7 +63,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BB480C5828ED1D7600958F38"
             BuildableName = "Push Notify.app"
-            BlueprintName = "Push Notify (macOS)"
+            BlueprintName = "Push Notify"
             ReferencedContainer = "container:Push Notify.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
