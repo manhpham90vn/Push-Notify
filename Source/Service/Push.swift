@@ -77,7 +77,7 @@ class Push: NSObject {
         }
         throw PushError.unknown
     }
-    
+
     func push(serverKey: String, aps: FCMiOS) async throws -> Int {
         let url = "https://fcm.googleapis.com/fcm/send"
         let token = HTTPHeader.authorization("key=\(serverKey)")
@@ -85,7 +85,7 @@ class Push: NSObject {
         let request = AF.request(url, method: .post, parameters: aps, encoder: JSONParameterEncoder.default, headers: httpHeaders).serializingDecodable(Empty.self)
         return await request.response.response?.statusCode ?? 0
     }
-    
+
     func push(serverKey: String, aps: FCMAndroid) async throws -> Int {
         let url = "https://fcm.googleapis.com/fcm/send"
         let token = HTTPHeader.authorization("key=\(serverKey)")
@@ -93,23 +93,32 @@ class Push: NSObject {
         let request = AF.request(url, method: .post, parameters: aps, encoder: JSONParameterEncoder.default, headers: httpHeaders).serializingDecodable(Empty.self)
         return await request.response.response?.statusCode ?? 0
     }
-    
+
     func push(aps: Simulator, bundleID: String) throws -> Int {
         let task = Process()
         let errorPipe = Pipe()
         let outputPipe = Pipe()
         let encode = JSONEncoder()
         encode.outputFormatting = .prettyPrinted
+
         let data = try encode.encode(aps)
         let string = String(data: data, encoding: .utf8) ?? ""
-        let command = "printf '\(string)' | xcrun simctl push booted \(bundleID) -"
+        let folder = NSTemporaryDirectory()
+        let fileName = UUID().uuidString + ".aps"
+        guard let file =  NSURL.fileURL(withPathComponents: [folder, fileName]) else { return -1 }
+        try string.write(to: file, atomically: true, encoding: .utf8)
+        var fileString = file.absoluteString
+        fileString = fileString.replacingOccurrences(of: "file://", with: "")
+
+        let command = "xcrun simctl push booted \(bundleID) \(fileString)"
         task.standardError = errorPipe
         task.standardOutput = outputPipe
         task.arguments = ["-c", command]
         task.executableURL = URL(fileURLWithPath: "/bin/zsh")
-        
+
         try task.run()
         task.waitUntilExit()
+
         return Int(task.terminationStatus)
     }
 }
