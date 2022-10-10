@@ -31,7 +31,7 @@ class Push: NSObject {
 
     static let shared = Push()
 
-    func push(env: APNSENV, deviceToken: String, aps: Payload, keyID: String, teamID: String, privateKey: String, bundleID: String) async throws -> Int {
+    func push(env: APNSENV, deviceToken: String, aps: APNsPayload, keyID: String, teamID: String, privateKey: String, bundleID: String) async throws -> Int {
         let iat = UInt64(Date().timeIntervalSince1970)
         let header: [String: String] = ["alg": "ES256", "typ": "JWT", "kid": keyID]
         let claims: [String: Any] = ["iat": iat, "iss": teamID]
@@ -50,7 +50,7 @@ class Push: NSObject {
         return await request.response.response?.statusCode ?? 0
     }
 
-    func push(env: APNSENV, deviceToken: String, aps: Payload, bundleID: String, identity: SecIdentity) async throws -> Int {
+    func push(env: APNSENV, deviceToken: String, aps: APNsPayload, bundleID: String, identity: SecIdentity) async throws -> Int {
         let rootQueue = DispatchQueue(label: "com.manhpham.Push-Notify")
         let queue = OperationQueue()
         queue.maxConcurrentOperationCount = 1
@@ -78,7 +78,7 @@ class Push: NSObject {
         throw PushError.unknown
     }
 
-    func push(serverKey: String, aps: FCMiOS) async throws -> Int {
+    func push(serverKey: String, aps: FCMiOSPayload) async throws -> Int {
         let url = "https://fcm.googleapis.com/fcm/send"
         let token = HTTPHeader.authorization("key=\(serverKey)")
         let httpHeaders = HTTPHeaders([token])
@@ -86,7 +86,7 @@ class Push: NSObject {
         return await request.response.response?.statusCode ?? 0
     }
 
-    func push(serverKey: String, aps: FCMAndroid) async throws -> Int {
+    func push(serverKey: String, aps: FCMAndroidPayload) async throws -> Int {
         let url = "https://fcm.googleapis.com/fcm/send"
         let token = HTTPHeader.authorization("key=\(serverKey)")
         let httpHeaders = HTTPHeaders([token])
@@ -94,7 +94,7 @@ class Push: NSObject {
         return await request.response.response?.statusCode ?? 0
     }
 
-    func push(aps: Simulator, bundleID: String) throws -> Int {
+    func push(aps: SimulatorPayload, bundleID: String) throws -> Int {
         let task = Process()
         let errorPipe = Pipe()
         let outputPipe = Pipe()

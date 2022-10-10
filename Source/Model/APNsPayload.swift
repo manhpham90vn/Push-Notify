@@ -1,5 +1,5 @@
 //
-//  APNS.swift
+//  APNsPayload.swift
 //  Push Notify
 //
 //  Created by Manh Pham on 08/10/2022.
@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct Payload: Codable {
-    var aps: APN
+struct APNsPayload: Codable {
+    var aps: APS
 }
 
-struct APN: Codable {
+struct APS: Codable {
     var badge: Int
     var alert: Alert
 }

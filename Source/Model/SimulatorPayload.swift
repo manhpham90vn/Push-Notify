@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct Simulator: Codable {
+struct SimulatorPayload: Codable {
     var bundle: String
-    var aps: APN
+    var aps: APS
     
     private enum CodingKeys : String, CodingKey {
         case bundle = "Simulator Target Bundle"
