@@ -33,7 +33,6 @@ struct ContentView: View {
     @State var subtitle: String = ""
     @State var bodyText: String = ""
     @State var password: String = ""
-    @State var isOn = false
     @State var message = ""
     @State var serverKey = ""
     @State var fcmToken = ""
@@ -218,21 +217,18 @@ struct ContentView: View {
                             fullText = try String(data: JSONEncoder().encode(payload), encoding: .utf8) ?? ""
                             let content = try String(contentsOf: file)
                             let statusCode = try await Push.shared.push(env: env, deviceToken: deviceToken, aps: payload, keyID: keyID, teamID: teamID, privateKey: content, bundleID: bundleID)
-                            isOn = true
                             message = statusCode == 200 ? "Send Success: status code \(statusCode)": "Send Failed: status code \(statusCode)"
+                            await MainActor.run(body: {
+                                showAlert(message: message)
+                            })
                         } catch let error {
-                            isOn = true
                             message = "\(error)"
+                            showAlert(message: message)
                         }
                     }
                 } else {
-                    isOn = true
                     message = "p8 file not found"
-                }
-            }.alert(message, isPresented: $isOn) {
-                Button("OK") {
-                    isOn = false
-                    message = ""
+                    showAlert(message: message)
                 }
             }
         }
@@ -339,25 +335,22 @@ struct ContentView: View {
                             let content = try PKCS12(pkcs12Data: data, password: password)
                             if let identity = content.identity {
                                 let statusCode = try await Push.shared.push(env: env, deviceToken: deviceToken, aps: payload, bundleID: bundleID, identity: identity)
-                                isOn = true
                                 message = statusCode == 200 ? "Send Success: status code \(statusCode)": "Send Failed: status code \(statusCode)"
+                                await MainActor.run(body: {
+                                    showAlert(message: message)
+                                })
                             } else {
-                                isOn = true
                                 message = "SecIdentity not found"
+                                showAlert(message: message)
                             }
                         } catch let error {
-                            isOn = true
                             message = "\(error)"
+                            showAlert(message: message)
                         }
                     }
                 } else {
-                    isOn = true
                     message = "p12 file not found"
-                }
-            }.alert(message, isPresented: $isOn) {
-                Button("OK") {
-                    isOn = false
-                    message = ""
+                    showAlert(message: message)
                 }
             }
         }
@@ -411,17 +404,14 @@ struct ContentView: View {
                     do {
                         fullText = try String(data: JSONEncoder().encode(payload), encoding: .utf8) ?? ""
                         let statusCode = try await Push.shared.push(serverKey: serverKey, aps: payload)
-                        isOn = true
                         message = statusCode == 200 ? "Send Success: status code \(statusCode)": "Send Failed: status code \(statusCode)"
+                        await MainActor.run(body: {
+                            showAlert(message: message)
+                        })
                     } catch let error {
-                        isOn = true
                         message = "\(error)"
+                        showAlert(message: message)
                     }
-                }
-            }.alert(message, isPresented: $isOn) {
-                Button("OK") {
-                    isOn = false
-                    message = ""
                 }
             }
         }
@@ -463,17 +453,14 @@ struct ContentView: View {
                     do {
                         fullText = try String(data: JSONEncoder().encode(payload), encoding: .utf8) ?? ""
                         let statusCode = try await Push.shared.push(serverKey: serverKey, aps: payload)
-                        isOn = true
                         message = statusCode == 200 ? "Send Success: status code \(statusCode)": "Send Failed: status code \(statusCode)"
+                        await MainActor.run(body: {
+                            showAlert(message: message)
+                        })
                     } catch let error {
-                        isOn = true
                         message = "\(error)"
+                        showAlert(message: message)
                     }
-                }
-            }.alert(message, isPresented: $isOn) {
-                Button("OK") {
-                    isOn = false
-                    message = ""
                 }
             }
         }
@@ -519,16 +506,11 @@ struct ContentView: View {
                 do {
                     fullText = try String(data: JSONEncoder().encode(payload), encoding: .utf8) ?? ""
                     let statusCode = try Push.shared.push(aps: payload, bundleID: bundleID)
-                    isOn = true
                     message = statusCode == 0 ? "Send Success: status code \(statusCode)": "Send Failed: status code \(statusCode)"
+                    showAlert(message: message)
                 } catch let error {
-                    isOn = true
                     message = "\(error)"
-                }
-            }.alert(message, isPresented: $isOn) {
-                Button("OK") {
-                    isOn = false
-                    message = ""
+                    showAlert(message: message)
                 }
             }
         }
@@ -554,6 +536,14 @@ struct ContentView: View {
             }
             Spacer()
         }
+    }
+    
+    func showAlert(message: String) {
+        let alert = NSAlert()
+        alert.messageText = message
+        alert.addButton(withTitle: "OK")
+        alert.alertStyle = .warning
+        alert.runModal()
     }
 }
 
