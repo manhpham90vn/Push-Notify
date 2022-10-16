@@ -20,14 +20,17 @@
 		BB13A8C928EE82A90073CFC2 /* ECSignature.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8B528EE7F8B0073CFC2 /* ECSignature.swift */; };
 		BB13A8CA28EE82AB0073CFC2 /* EllipticCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8B128EE7F8B0073CFC2 /* EllipticCurve.swift */; };
 		BB13A8CB28EE82AD0073CFC2 /* SSLPointerTricks.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13A8B228EE7F8B0073CFC2 /* SSLPointerTricks.swift */; };
+		BB32BD4128F872B90003C085 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB32BD4028F872B90003C085 /* CheckboxView.swift */; };
 		BB480C5D28ED1D7600958F38 /* Push_NotifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB480C4C28ED1D7500958F38 /* Push_NotifyApp.swift */; };
 		BB480C5F28ED1D7600958F38 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB480C4D28ED1D7500958F38 /* ContentView.swift */; };
 		BB480C6128ED1D7600958F38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB480C4E28ED1D7600958F38 /* Assets.xcassets */; };
+		BB4B51E528FBAA4100EB1657 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4B51E428FBAA4100EB1657 /* TextFieldView.swift */; };
+		BB4B51E728FBAF6000EB1657 /* SelectFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4B51E628FBAF6000EB1657 /* SelectFileView.swift */; };
 		BBBBD4E328ED6454007CE31E /* Push.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBD4E128ED6454007CE31E /* Push.swift */; };
-		BBCE759128F1CFCF00599AD6 /* APNS.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCE758F28F1CFCF00599AD6 /* APNS.swift */; };
-		BBCE759428F1CFEE00599AD6 /* FCM+iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCE759228F1CFEE00599AD6 /* FCM+iOS.swift */; };
-		BBCE759728F1D03B00599AD6 /* FCM+Android.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCE759528F1D03B00599AD6 /* FCM+Android.swift */; };
-		BBCE759A28F1D38600599AD6 /* Simulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCE759828F1D38600599AD6 /* Simulator.swift */; };
+		BBCE759128F1CFCF00599AD6 /* APNsPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCE758F28F1CFCF00599AD6 /* APNsPayload.swift */; };
+		BBCE759428F1CFEE00599AD6 /* FCMiOSPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCE759228F1CFEE00599AD6 /* FCMiOSPayload.swift */; };
+		BBCE759728F1D03B00599AD6 /* FCMAndroidPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCE759528F1D03B00599AD6 /* FCMAndroidPayload.swift */; };
+		BBCE759A28F1D38600599AD6 /* SimulatorPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCE759828F1D38600599AD6 /* SimulatorPayload.swift */; };
 		BBEFE3A528F1345B00124F7B /* PKCS12.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEFE3A328F1345900124F7B /* PKCS12.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,16 +61,19 @@
 		BB13A8B328EE7F8B0073CFC2 /* ASN1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASN1.swift; sourceTree = "<group>"; };
 		BB13A8B428EE7F8B0073CFC2 /* ECEncryptable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECEncryptable.swift; sourceTree = "<group>"; };
 		BB13A8B528EE7F8B0073CFC2 /* ECSignature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECSignature.swift; sourceTree = "<group>"; };
+		BB32BD4028F872B90003C085 /* CheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
 		BB480C4C28ED1D7500958F38 /* Push_NotifyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Push_NotifyApp.swift; sourceTree = "<group>"; };
 		BB480C4D28ED1D7500958F38 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BB480C4E28ED1D7600958F38 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB480C5928ED1D7600958F38 /* Push Notify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Push Notify.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB480C5B28ED1D7600958F38 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		BB4B51E428FBAA4100EB1657 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
+		BB4B51E628FBAF6000EB1657 /* SelectFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFileView.swift; sourceTree = "<group>"; };
 		BBBBD4E128ED6454007CE31E /* Push.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Push.swift; sourceTree = "<group>"; };
-		BBCE758F28F1CFCF00599AD6 /* APNS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APNS.swift; sourceTree = "<group>"; };
-		BBCE759228F1CFEE00599AD6 /* FCM+iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FCM+iOS.swift"; sourceTree = "<group>"; };
-		BBCE759528F1D03B00599AD6 /* FCM+Android.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FCM+Android.swift"; sourceTree = "<group>"; };
-		BBCE759828F1D38600599AD6 /* Simulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simulator.swift; sourceTree = "<group>"; };
+		BBCE758F28F1CFCF00599AD6 /* APNsPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APNsPayload.swift; sourceTree = "<group>"; };
+		BBCE759228F1CFEE00599AD6 /* FCMiOSPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCMiOSPayload.swift; sourceTree = "<group>"; };
+		BBCE759528F1D03B00599AD6 /* FCMAndroidPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCMAndroidPayload.swift; sourceTree = "<group>"; };
+		BBCE759828F1D38600599AD6 /* SimulatorPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorPayload.swift; sourceTree = "<group>"; };
 		BBEFE3A328F1345900124F7B /* PKCS12.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PKCS12.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -159,10 +165,10 @@
 		BBCE758D28F1CFA200599AD6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BBCE758F28F1CFCF00599AD6 /* APNS.swift */,
-				BBCE759228F1CFEE00599AD6 /* FCM+iOS.swift */,
-				BBCE759528F1D03B00599AD6 /* FCM+Android.swift */,
-				BBCE759828F1D38600599AD6 /* Simulator.swift */,
+				BBCE758F28F1CFCF00599AD6 /* APNsPayload.swift */,
+				BBCE759228F1CFEE00599AD6 /* FCMiOSPayload.swift */,
+				BBCE759528F1D03B00599AD6 /* FCMAndroidPayload.swift */,
+				BBCE759828F1D38600599AD6 /* SimulatorPayload.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -172,6 +178,9 @@
 			children = (
 				BB480C4C28ED1D7500958F38 /* Push_NotifyApp.swift */,
 				BB480C4D28ED1D7500958F38 /* ContentView.swift */,
+				BB32BD4028F872B90003C085 /* CheckboxView.swift */,
+				BB4B51E428FBAA4100EB1657 /* TextFieldView.swift */,
+				BB4B51E628FBAF6000EB1657 /* SelectFileView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -259,17 +268,20 @@
 				BB480C5F28ED1D7600958F38 /* ContentView.swift in Sources */,
 				BB13A8C628EE82A20073CFC2 /* ECPrivateKey.swift in Sources */,
 				BB13A8CB28EE82AD0073CFC2 /* SSLPointerTricks.swift in Sources */,
+				BB32BD4128F872B90003C085 /* CheckboxView.swift in Sources */,
 				BB13A8C728EE82A50073CFC2 /* ECPublicKey.swift in Sources */,
-				BBCE759728F1D03B00599AD6 /* FCM+Android.swift in Sources */,
-				BBCE759428F1CFEE00599AD6 /* FCM+iOS.swift in Sources */,
+				BBCE759728F1D03B00599AD6 /* FCMAndroidPayload.swift in Sources */,
+				BBCE759428F1CFEE00599AD6 /* FCMiOSPayload.swift in Sources */,
 				BB13A8CA28EE82AB0073CFC2 /* EllipticCurve.swift in Sources */,
+				BB4B51E528FBAA4100EB1657 /* TextFieldView.swift in Sources */,
 				BBBBD4E328ED6454007CE31E /* Push.swift in Sources */,
 				BB480C5D28ED1D7600958F38 /* Push_NotifyApp.swift in Sources */,
 				BB13A8C228EE82990073CFC2 /* Data+Extensions.swift in Sources */,
 				BB13A8C328EE829B0073CFC2 /* ECDecryptable.swift in Sources */,
 				BB13A8C828EE82A70073CFC2 /* ECSignable.swift in Sources */,
-				BBCE759128F1CFCF00599AD6 /* APNS.swift in Sources */,
-				BBCE759A28F1D38600599AD6 /* Simulator.swift in Sources */,
+				BB4B51E728FBAF6000EB1657 /* SelectFileView.swift in Sources */,
+				BBCE759128F1CFCF00599AD6 /* APNsPayload.swift in Sources */,
+				BBCE759A28F1D38600599AD6 /* SimulatorPayload.swift in Sources */,
 				BBEFE3A528F1345B00124F7B /* PKCS12.swift in Sources */,
 				BB13A8C928EE82A90073CFC2 /* ECSignature.swift in Sources */,
 				BB13A8C128EE82960073CFC2 /* ASN1.swift in Sources */,

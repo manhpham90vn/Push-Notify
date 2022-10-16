@@ -10,13 +10,27 @@ import SwiftUI
 struct ContentView: View {
 
     var body: some View {
-        main.frame(minWidth: 600, minHeight: 500).padding(.all, 20)
+        main.frame(minWidth: 600, minHeight: 700).padding(.all, 20)
     }
 
+    // common
+    @State var bundleID = ""
+    @State var message = ""
+    @State var serverKey = ""
+    
+    // payload
+    @State var badge: String = ""
+    @State var title: String = ""
+    @State var subtitle: String = ""
+    @State var bodyText: String = ""
+    
+    // push type
     @State var isCheckAPNS = true
     @State var isCheckFCM = false
     @State var isCheckAndroid = false
     @State var isCheckSimulator = false
+    
+    // apns type
     @State var isCheckAuthenticationKey = true
     @State var isCheckCertificates = false
     @State var isCheckProduction = false
@@ -25,211 +39,140 @@ struct ContentView: View {
     @State var fileP12: URL?
     @State var keyID = ""
     @State var teamID = ""
-    @State var bundleID = ""
     @State var deviceToken = ""
-    @State var fullText: String = ""
-    @State var badge: String = ""
-    @State var title: String = ""
-    @State var subtitle: String = ""
-    @State var bodyText: String = ""
     @State var password: String = ""
-    @State var message = ""
-    @State var serverKey = ""
-    @State var fcmToken = ""
-    @State var androidFCMToken = ""
+    @State var payloadAPNS: String = ""
     
+    // fcm-ios
+    @State var fcmToken = ""
+    @State var payloadFCMiOS: String = ""
+    
+    // fcm-android
+    @State var androidFCMToken = ""
+    @State var payloadFCMAndroid: String = ""
+    
+    // simulator
+    @State var payloadSimulator: String = ""
+
     var selectPushTypeView: some View {
-        HStack(alignment: .bottom, spacing: 20) {
-            HStack {
-                Button {
-                    isCheckAPNS = true
+        VStack {
+            Text("Select Push Notification Type")
+            HStack(alignment: .bottom, spacing: 20) {
+                
+                CheckboxView(text: "APNS", isChecked: $isCheckAPNS) { _ in
                     isCheckFCM = false
                     isCheckAndroid = false
                     isCheckSimulator = false
-                } label: {
-                    Image(systemName: isCheckAPNS ? "checkmark.square" : "square")
                 }
-                Text("APNS")
-            }
-
-            HStack {
-                Button {
-                    isCheckFCM = true
+                
+                CheckboxView(text: "FCM-iOS", isChecked: $isCheckFCM) { _ in
                     isCheckAPNS = false
                     isCheckAndroid = false
                     isCheckSimulator = false
-                } label: {
-                    Image(systemName: isCheckFCM ? "checkmark.square" : "square")
                 }
-                Text("FCM")
-            }
-
-            HStack {
-                Button {
+                
+                CheckboxView(text: "FCM-Android", isChecked: $isCheckAndroid) { _ in
                     isCheckAPNS = false
                     isCheckFCM = false
                     isCheckSimulator = false
-                    isCheckAndroid = true
-                } label: {
-                    Image(systemName: isCheckAndroid ? "checkmark.square" : "square")
                 }
-                Text("Android")
-            }
 
-            HStack {
-                Button {
+                CheckboxView(text: "Simulator", isChecked: $isCheckSimulator) { _ in
                     isCheckAPNS = false
                     isCheckFCM = false
                     isCheckAndroid = false
-                    isCheckSimulator = true
-                } label: {
-                    Image(systemName: isCheckSimulator ? "checkmark.square" : "square")
                 }
-                Text("Simulator")
             }
         }
     }
 
     var selectAPNSTypeView: some View {
-        HStack {
+        VStack {
+            Text("Select APNs Type")
             HStack {
-                Button {
-                    isCheckAuthenticationKey = true
+                CheckboxView(text: "Authentication Key", isChecked: $isCheckAuthenticationKey) { _ in
                     isCheckCertificates = false
-                } label: {
-                    Image(systemName: isCheckAuthenticationKey ? "checkmark.square" : "square")
                 }
-                Text("Authentication Key")
-            }
-
-            HStack {
-                Button {
+                
+                CheckboxView(text: "Certificates", isChecked: $isCheckCertificates) { _ in
                     isCheckAuthenticationKey = false
-                    isCheckCertificates = true
-                } label: {
-                    Image(systemName: isCheckCertificates ? "checkmark.square" : "square")
                 }
-                Text("Certificates")
             }
         }
     }
 
     var authenKeyView: some View {
         VStack {
+            
             HStack {
-                HStack {
-                    Button {
-                        isCheckProduction = true
-                        isCHeckSanbox = false
-                    } label: {
-                        Image(systemName: isCheckProduction ? "checkmark.square" : "square")
-                    }
-                    Text("Production")
+                CheckboxView(text: "Production", isChecked: $isCheckProduction) { _ in
+                    isCHeckSanbox = false
                 }
 
-                HStack {
-                    Button {
-                        isCheckProduction = false
-                        isCHeckSanbox = true
-                    } label: {
-                        Image(systemName: isCHeckSanbox ? "checkmark.square" : "square")
-                    }
-                    Text("Sanbox")
+                CheckboxView(text: "Sanbox", isChecked: $isCHeckSanbox) { _ in
+                    isCheckProduction = false
                 }
             }
-
-            Spacer(minLength: 30)
-
+            
             VStack(alignment: .leading) {
-                HStack(alignment: .center) {
-                    Text(fileP8?.lastPathComponent ?? "Filename")
-                    Button {
-                        let panel = NSOpenPanel()
-                        panel.allowedFileTypes = ["p8"]
-                        panel.allowsMultipleSelection = false
-                        panel.canChooseDirectories = false
-                        panel.canCreateDirectories = false
-                        panel.title = "Select P8 file"
-
-                        if panel.runModal() == .OK,
-                            let url = panel.url {
-                            self.fileP8 = url
-                        }
-                    } label: {
-                        Text("Select P8 File")
-                    }
-                }
-
-                HStack {
-                    Text("Key ID")
-                    TextField("Key ID", text: $keyID)
-                }
-
-                HStack {
-                    Text("Team ID")
-                    TextField("Team ID", text: $teamID)
-                }
-
-                HStack {
-                    Text("Bundle ID")
-                    TextField("Bundle ID", text: $bundleID)
-                }
-
-                HStack {
-                    Text("Device Token")
-                    TextField("Device Token", text: $deviceToken)
-                }
+                
+                SelectFileView(label: "Select P8 file", fileType: "p8", file: $fileP8)
+                
+                TextFieldView(label: "Key ID", text: $keyID)
+                
+                TextFieldView(label: "Team ID", text: $teamID)
+                
+                TextFieldView(label: "Bundle ID", text: $bundleID)
+                
+                TextFieldView(label: "Device Token", text: $deviceToken)
             }
 
-            Spacer(minLength: 30)
-
-            HStack(alignment: .center, spacing: 20) {
-                HStack {
-                    Text("Badge")
-                    TextField("Badge", text: $badge)
-                }.frame(minWidth: 0, maxWidth: .infinity)
-
-                HStack {
-                    Text("Title")
-                    TextField("Title", text: $title)
-                }.frame(minWidth: 0, maxWidth: .infinity)
+            Spacer(minLength: 20)
+            
+            VStack(alignment: .leading) {
+                
+                Text("Config Payload")
+                
+                TextFieldView(label: "Badge", text: $badge)
+                
+                TextFieldView(label: "Title", text: $title)
+                
+                TextFieldView(label: "Sub title", text: $subtitle)
+                
+                TextFieldView(label: "Body", text: $bodyText)
             }
-
-            HStack(alignment: .center, spacing: 20) {
-                HStack {
-                    Text("Sub title")
-                    TextField("Sub title", text: $subtitle)
-                }.frame(minWidth: 0, maxWidth: .infinity)
-
-                HStack {
-                    Text("Body")
-                    TextField("Body", text: $bodyText)
-                }.frame(minWidth: 0, maxWidth: .infinity)
-            }
-
-            TextEditor(text: $fullText)
-            Button("Submit") {
-                let env = isCheckProduction ? APNSENV.production : APNSENV.sanbox
-                let payload = Payload(aps: APN(badge: Int(badge) ?? 0, alert: .init(title: title, subtitle: subtitle, body: bodyText)))
-                if let file = fileP8 {
-                    Task {
-                        do {
-                            fullText = try String(data: JSONEncoder().encode(payload), encoding: .utf8) ?? ""
-                            let content = try String(contentsOf: file)
-                            let statusCode = try await Push.shared.push(env: env, deviceToken: deviceToken, aps: payload, keyID: keyID, teamID: teamID, privateKey: content, bundleID: bundleID)
-                            message = statusCode == 200 ? "Send Success: status code \(statusCode)": "Send Failed: status code \(statusCode)"
-                            await MainActor.run(body: {
+            
+            Spacer(minLength: 20)
+            
+            VStack(alignment: .leading) {
+                Text("Preview Payload")
+                
+                TextEditor(text: $payloadAPNS)
+                
+                Button("Submit") {
+                    let env = isCheckProduction ? APNSENV.production : APNSENV.sanbox
+                    let payload = APNsPayload(aps: APS(badge: Int(badge) ?? 0, alert: .init(title: title, subtitle: subtitle, body: bodyText)))
+                    if let file = fileP8 {
+                        Task {
+                            do {
+                                payloadAPNS = try String(data: JSONEncoder().encode(payload), encoding: .utf8) ?? ""
+                                let content = try String(contentsOf: file)
+                                let statusCode = try await Push.shared.push(env: env, deviceToken: deviceToken, aps: payload, keyID: keyID, teamID: teamID, privateKey: content, bundleID: bundleID)
+                                message = statusCode == 200 ? "Send Success: status code \(statusCode)": "Send Failed: status code \(statusCode)"
+                                await MainActor.run(body: {
+                                    showAlert(message: message)
+                                })
+                            } catch let error {
+                                message = "\(error)"
                                 showAlert(message: message)
-                            })
-                        } catch let error {
-                            message = "\(error)"
-                            showAlert(message: message)
+                            }
                         }
+                    } else {
+                        message = "p8 file not found"
+                        showAlert(message: message)
                     }
-                } else {
-                    message = "p8 file not found"
-                    showAlert(message: message)
                 }
+
             }
         }
     }
@@ -238,171 +181,119 @@ struct ContentView: View {
         VStack {
             
             HStack {
-                HStack {
-                    Button {
-                        isCheckProduction = true
-                        isCHeckSanbox = false
-                    } label: {
-                        Image(systemName: isCheckProduction ? "checkmark.square" : "square")
-                    }
-                    Text("Production")
+                CheckboxView(text: "Production", isChecked: $isCheckProduction) { _ in
+                    isCHeckSanbox = false
                 }
-
-                HStack {
-                    Button {
-                        isCheckProduction = false
-                        isCHeckSanbox = true
-                    } label: {
-                        Image(systemName: isCHeckSanbox ? "checkmark.square" : "square")
-                    }
-                    Text("Sanbox")
+                
+                CheckboxView(text: "Sanbox", isChecked: $isCHeckSanbox) { _ in
+                    isCheckProduction = false
                 }
             }
-
-            Spacer(minLength: 30)
             
             VStack(alignment: .leading) {
-                HStack {
-                    Text(fileP12?.lastPathComponent ?? "Filename")
-                    Button {
-                        let panel = NSOpenPanel()
-                        panel.allowedFileTypes = ["p12"]
-                        panel.allowsMultipleSelection = false
-                        panel.canChooseDirectories = false
-                        panel.canCreateDirectories = false
-                        panel.title = "Select P12 file"
-
-                        if panel.runModal() == .OK,
-                            let url = panel.url {
-                            self.fileP12 = url
-                        }
-                    } label: {
-                        Text("Select P12 File")
-                    }
-                }
-
-                HStack {
-                    Text("Password")
-                    TextField("Password", text: $password)
-                }
-
-                HStack {
-                    Text("Bundle ID")
-                    TextField("Bundle ID", text: $bundleID)
-                }
-
-                HStack {
-                    Text("Device Token")
-                    TextField("Device Token", text: $deviceToken)
-                }
+                
+                SelectFileView(label: "Select P12 file", fileType: "p12", file: $fileP12)
+                
+                TextFieldView(label: "Password", text: $password)
+                
+                TextFieldView(label: "Bundle ID", text: $bundleID)
+                
+                TextFieldView(label: "Device Token", text: $deviceToken)
             }
 
-            Spacer(minLength: 30)
+            Spacer(minLength: 20)
+                        
+            VStack(alignment: .leading) {
+                
+                Text("Config Payload")
+                
+                TextFieldView(label: "Badge", text: $badge)
+                
+                TextFieldView(label: "Title", text: $title)
+                
+                TextFieldView(label: "Sub title", text: $subtitle)
+                
+                TextFieldView(label: "Body", text: $bodyText)
+            }
             
-            HStack(alignment: .center, spacing: 20) {
-                HStack {
-                    Text("Badge")
-                    TextField("Badge", text: $badge)
-                }.frame(minWidth: 0, maxWidth: .infinity)
+            Spacer(minLength: 20)
+            
+            VStack(alignment: .leading) {
+                Text("Preview Payload")
                 
-                HStack {
-                    Text("Title")
-                    TextField("Title", text: $title)
-                }.frame(minWidth: 0, maxWidth: .infinity)
-            }
-
-            HStack(alignment: .center, spacing: 20) {
-                HStack {
-                    Text("Sub title")
-                    TextField("Sub title", text: $subtitle)
-                }.frame(minWidth: 0, maxWidth: .infinity)
+                TextEditor(text: $payloadAPNS)
                 
-                HStack {
-                    Text("Body")
-                    TextField("Body", text: $bodyText)
-                }.frame(minWidth: 0, maxWidth: .infinity)
-            }
-
-            TextEditor(text: $fullText)
-            Button("Submit") {
-                let env = isCheckProduction ? APNSENV.production : APNSENV.sanbox
-                let payload = Payload(aps: APN(badge: Int(badge) ?? 0, alert: .init(title: title, subtitle: subtitle, body: bodyText)))
-                if let file = fileP12 {
-                    Task {
-                        do {
-                            fullText = try String(data: JSONEncoder().encode(payload), encoding: .utf8) ?? ""
-                            let data = try Data(contentsOf: file)
-                            let content = try PKCS12(pkcs12Data: data, password: password)
-                            if let identity = content.identity {
-                                let statusCode = try await Push.shared.push(env: env, deviceToken: deviceToken, aps: payload, bundleID: bundleID, identity: identity)
-                                message = statusCode == 200 ? "Send Success: status code \(statusCode)": "Send Failed: status code \(statusCode)"
-                                await MainActor.run(body: {
+                Button("Submit") {
+                    let env = isCheckProduction ? APNSENV.production : APNSENV.sanbox
+                    let payload = APNsPayload(aps: APS(badge: Int(badge) ?? 0, alert: .init(title: title, subtitle: subtitle, body: bodyText)))
+                    if let file = fileP12 {
+                        Task {
+                            do {
+                                payloadAPNS = try String(data: JSONEncoder().encode(payload), encoding: .utf8) ?? ""
+                                let data = try Data(contentsOf: file)
+                                let content = try PKCS12(pkcs12Data: data, password: password)
+                                if let identity = content.identity {
+                                    let statusCode = try await Push.shared.push(env: env, deviceToken: deviceToken, aps: payload, bundleID: bundleID, identity: identity)
+                                    message = statusCode == 200 ? "Send Success: status code \(statusCode)": "Send Failed: status code \(statusCode)"
+                                    await MainActor.run(body: {
+                                        showAlert(message: message)
+                                    })
+                                } else {
+                                    message = "SecIdentity not found"
                                     showAlert(message: message)
-                                })
-                            } else {
-                                message = "SecIdentity not found"
+                                }
+                            } catch let error {
+                                message = "\(error)"
                                 showAlert(message: message)
                             }
-                        } catch let error {
-                            message = "\(error)"
-                            showAlert(message: message)
                         }
+                    } else {
+                        message = "p12 file not found"
+                        showAlert(message: message)
                     }
-                } else {
-                    message = "p12 file not found"
-                    showAlert(message: message)
                 }
             }
         }
     }
 
     var fcmView: some View {
-        VStack(alignment: .center) {
+        VStack(alignment: .leading) {
             
-            Spacer(minLength: 30)
-            
-            HStack {
-                Text("Server key")
-                TextField("Server key", text: $serverKey)
-            }
-            
-            HStack {
-                Text("FCM Token")
-                TextField("FCM Token", text: $fcmToken)
-            }
-            
-            Spacer(minLength: 30)
-            
-            HStack(alignment: .center, spacing: 20) {
-                HStack {
-                    Text("Badge")
-                    TextField("Badge", text: $badge)
-                }.frame(minWidth: 0, maxWidth: .infinity)
+            Group {
+                Spacer(minLength: 30)
                 
-                HStack {
-                    Text("Title")
-                    TextField("Title", text: $title)
-                }.frame(minWidth: 0, maxWidth: .infinity)
+                TextFieldView(label: "Server key", text: $serverKey)
+                
+                TextFieldView(label: "FCM Token", text: $fcmToken)
+            }
+            
+            Group {
+                Spacer(minLength: 30)
+                
+                Text("Config Payload")
+                
+                TextFieldView(label: "Badge", text: $badge)
+                
+                TextFieldView(label: "Title", text: $title)
+                
+                TextFieldView(label: "Sub title", text: $subtitle)
+                
+                TextFieldView(label: "Body", text: $bodyText)
             }
 
-            HStack(alignment: .center, spacing: 20) {
-                HStack {
-                    Text("Sub title")
-                    TextField("Sub title", text: $subtitle)
-                }.frame(minWidth: 0, maxWidth: .infinity)
+            Group {
+                Spacer(minLength: 30)
                 
-                HStack {
-                    Text("Body")
-                    TextField("Body", text: $bodyText)
-                }.frame(minWidth: 0, maxWidth: .infinity)
+                Text("Preview Payload")
+                
+                TextEditor(text: $payloadFCMiOS)
             }
-
-            TextEditor(text: $fullText)
+        
             Button("Submit") {
-                let payload = FCMiOS(to: fcmToken, notification: .init(title: title, subtitle: subtitle, body: bodyText, badge: badge))
+                let payload = FCMiOSPayload(to: fcmToken, notification: .init(title: title, subtitle: subtitle, body: bodyText, badge: badge))
                 Task {
                     do {
-                        fullText = try String(data: JSONEncoder().encode(payload), encoding: .utf8) ?? ""
+                        payloadFCMiOS = try String(data: JSONEncoder().encode(payload), encoding: .utf8) ?? ""
                         let statusCode = try await Push.shared.push(serverKey: serverKey, aps: payload)
                         message = statusCode == 200 ? "Send Success: status code \(statusCode)": "Send Failed: status code \(statusCode)"
                         await MainActor.run(body: {
@@ -418,40 +309,39 @@ struct ContentView: View {
     }
     
     var androidView: some View {
-        VStack(alignment: .center) {
+        VStack(alignment: .leading) {
             
-            Spacer(minLength: 30)
-            
-            HStack {
-                Text("Server key")
-                TextField("Server key", text: $serverKey)
-            }
-            
-            HStack {
-                Text("FCM Token")
-                TextField("FCM Token", text: $androidFCMToken)
-            }
-            
-            Spacer(minLength: 30)
-            
-            HStack(alignment: .center, spacing: 20) {
-                HStack {
-                    Text("Title")
-                    TextField("Title", text: $title)
-                }.frame(minWidth: 0, maxWidth: .infinity)
+            Group {
+                Spacer(minLength: 30)
                 
-                HStack {
-                    Text("Body")
-                    TextField("Body", text: $bodyText)
-                }.frame(minWidth: 0, maxWidth: .infinity)
+                TextFieldView(label: "Server key", text: $serverKey)
+                
+                TextFieldView(label: "FCM Token", text: $fcmToken)
             }
-
-            TextEditor(text: $fullText)
+            
+            Group {
+                Spacer(minLength: 30)
+                
+                Text("Config Payload")
+                
+                TextFieldView(label: "Title", text: $title)
+                            
+                TextFieldView(label: "Body", text: $bodyText)
+            }
+            
+            Group {
+                Spacer(minLength: 30)
+                
+                Text("Preview Payload")
+                
+                TextEditor(text: $payloadFCMAndroid)
+            }
+            
             Button("Submit") {
                 Task {
-                    let payload = FCMAndroid(to: androidFCMToken, notification: .init(title: title, body: bodyText))
+                    let payload = FCMAndroidPayload(to: androidFCMToken, notification: .init(title: title, body: bodyText))
                     do {
-                        fullText = try String(data: JSONEncoder().encode(payload), encoding: .utf8) ?? ""
+                        payloadFCMAndroid = try String(data: JSONEncoder().encode(payload), encoding: .utf8) ?? ""
                         let statusCode = try await Push.shared.push(serverKey: serverKey, aps: payload)
                         message = statusCode == 200 ? "Send Success: status code \(statusCode)": "Send Failed: status code \(statusCode)"
                         await MainActor.run(body: {
@@ -471,40 +361,22 @@ struct ContentView: View {
 
             Spacer(minLength: 30)
 
-            HStack {
-                Text("Bundle ID")
-                TextField("Bundle ID", text: $bundleID)
-            }
+            TextFieldView(label: "Bundle ID", text: $bundleID)
             
-            HStack(alignment: .center, spacing: 20) {
-                HStack {
-                    Text("Badge")
-                    TextField("Badge", text: $badge)
-                }.frame(minWidth: 0, maxWidth: .infinity)
-                
-                HStack {
-                    Text("Title")
-                    TextField("Title", text: $title)
-                }.frame(minWidth: 0, maxWidth: .infinity)
-            }
-
-            HStack(alignment: .center, spacing: 20) {
-                HStack {
-                    Text("Sub title")
-                    TextField("Sub title", text: $subtitle)
-                }.frame(minWidth: 0, maxWidth: .infinity)
-                
-                HStack {
-                    Text("Body")
-                    TextField("Body", text: $bodyText)
-                }.frame(minWidth: 0, maxWidth: .infinity)
-            }
-
-            TextEditor(text: $fullText)
+            TextFieldView(label: "Badge", text: $badge)
+            
+            TextFieldView(label: "Title", text: $title)
+            
+            TextFieldView(label: "Sub title", text: $subtitle)
+            
+            TextFieldView(label: "Body", text: $bodyText)
+            
+            TextEditor(text: $payloadSimulator)
+            
             Button("Submit") {
-                let payload = Simulator(bundle: bundleID, aps: .init(badge: Int(badge) ?? 0, alert: .init(title: title, subtitle: subtitle, body: bodyText)))
+                let payload = SimulatorPayload(bundle: bundleID, aps: .init(badge: Int(badge) ?? 0, alert: .init(title: title, subtitle: subtitle, body: bodyText)))
                 do {
-                    fullText = try String(data: JSONEncoder().encode(payload), encoding: .utf8) ?? ""
+                    payloadSimulator = try String(data: JSONEncoder().encode(payload), encoding: .utf8) ?? ""
                     let statusCode = try Push.shared.push(aps: payload, bundleID: bundleID)
                     message = statusCode == 0 ? "Send Success: status code \(statusCode)": "Send Failed: status code \(statusCode)"
                     showAlert(message: message)
@@ -521,6 +393,7 @@ struct ContentView: View {
             selectPushTypeView
             if isCheckAPNS {
                 selectAPNSTypeView
+                Text("Select Environment")
                 if isCheckAuthenticationKey {
                     authenKeyView
                 }

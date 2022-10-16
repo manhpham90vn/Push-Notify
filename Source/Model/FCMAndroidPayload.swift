@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct FCMAndroid: Codable {
+struct FCMAndroidPayload: Codable {
     var to: String
     var notification: AlertAndroid
-}
-
-struct AlertAndroid: Codable {
-    var title: String
-    var body: String
+    
+    struct AlertAndroid: Codable {
+        var title: String
+        var body: String
+    }
 }
