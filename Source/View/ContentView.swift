@@ -55,77 +55,48 @@ struct ContentView: View {
     @State var payloadSimulator: String = ""
 
     var selectPushTypeView: some View {
-        HStack(alignment: .bottom, spacing: 20) {
-            HStack {
-                Button {
-                    isCheckAPNS = true
+        VStack {
+            Text("Select Push Notification Type")
+            HStack(alignment: .bottom, spacing: 20) {
+                
+                CheckboxView(text: "APNS", isChecked: $isCheckAPNS) { _ in
                     isCheckFCM = false
                     isCheckAndroid = false
                     isCheckSimulator = false
-                } label: {
-                    Image(systemName: isCheckAPNS ? "checkmark.square" : "square")
                 }
-                Text("APNS")
-            }
-
-            HStack {
-                Button {
-                    isCheckFCM = true
+                
+                CheckboxView(text: "FCM-iOS", isChecked: $isCheckFCM) { _ in
                     isCheckAPNS = false
                     isCheckAndroid = false
                     isCheckSimulator = false
-                } label: {
-                    Image(systemName: isCheckFCM ? "checkmark.square" : "square")
                 }
-                Text("FCM-iOS")
-            }
-
-            HStack {
-                Button {
+                
+                CheckboxView(text: "FCM-Android", isChecked: $isCheckAndroid) { _ in
                     isCheckAPNS = false
                     isCheckFCM = false
                     isCheckSimulator = false
-                    isCheckAndroid = true
-                } label: {
-                    Image(systemName: isCheckAndroid ? "checkmark.square" : "square")
                 }
-                Text("FCM-Android")
-            }
 
-            HStack {
-                Button {
+                CheckboxView(text: "Simulator", isChecked: $isCheckSimulator) { _ in
                     isCheckAPNS = false
                     isCheckFCM = false
                     isCheckAndroid = false
-                    isCheckSimulator = true
-                } label: {
-                    Image(systemName: isCheckSimulator ? "checkmark.square" : "square")
                 }
-                Text("Simulator")
             }
         }
     }
 
     var selectAPNSTypeView: some View {
-        HStack {
+        VStack {
+            Text("Select APNs Type")
             HStack {
-                Button {
-                    isCheckAuthenticationKey = true
+                CheckboxView(text: "Authentication Key", isChecked: $isCheckAuthenticationKey) { _ in
                     isCheckCertificates = false
-                } label: {
-                    Image(systemName: isCheckAuthenticationKey ? "checkmark.square" : "square")
                 }
-                Text("Authentication Key")
-            }
-
-            HStack {
-                Button {
+                
+                CheckboxView(text: "Certificates", isChecked: $isCheckCertificates) { _ in
                     isCheckAuthenticationKey = false
-                    isCheckCertificates = true
-                } label: {
-                    Image(systemName: isCheckCertificates ? "checkmark.square" : "square")
                 }
-                Text("Certificates")
             }
         }
     }
@@ -134,67 +105,26 @@ struct ContentView: View {
         VStack {
             
             HStack {
-                HStack {
-                    Button {
-                        isCheckProduction = true
-                        isCHeckSanbox = false
-                    } label: {
-                        Image(systemName: isCheckProduction ? "checkmark.square" : "square")
-                    }
-                    Text("Production")
+                CheckboxView(text: "Production", isChecked: $isCheckProduction) { _ in
+                    isCHeckSanbox = false
                 }
 
-                HStack {
-                    Button {
-                        isCheckProduction = false
-                        isCHeckSanbox = true
-                    } label: {
-                        Image(systemName: isCHeckSanbox ? "checkmark.square" : "square")
-                    }
-                    Text("Sanbox")
+                CheckboxView(text: "Sanbox", isChecked: $isCHeckSanbox) { _ in
+                    isCheckProduction = false
                 }
             }
             
             VStack(alignment: .leading) {
                 
-                HStack {
-                    Text(fileP8?.lastPathComponent ?? "Filename")
-                    Button {
-                        let panel = NSOpenPanel()
-                        panel.allowedFileTypes = ["p8"]
-                        panel.allowsMultipleSelection = false
-                        panel.canChooseDirectories = false
-                        panel.canCreateDirectories = false
-                        panel.title = "Select P8 file"
-
-                        if panel.runModal() == .OK,
-                            let url = panel.url {
-                            self.fileP8 = url
-                        }
-                    } label: {
-                        Text("Select P8 File")
-                    }
-                }
-
-                HStack {
-                    Text("Key ID")
-                    TextField("Key ID", text: $keyID)
-                }
-
-                HStack {
-                    Text("Team ID")
-                    TextField("Team ID", text: $teamID)
-                }
-
-                HStack {
-                    Text("Bundle ID")
-                    TextField("Bundle ID", text: $bundleID)
-                }
-
-                HStack {
-                    Text("Device Token")
-                    TextField("Device Token", text: $deviceToken)
-                }
+                SelectFileView(label: "Select P8 file", fileType: "p8", file: $fileP8)
+                
+                TextFieldView(label: "Key ID", text: $keyID)
+                
+                TextFieldView(label: "Team ID", text: $teamID)
+                
+                TextFieldView(label: "Bundle ID", text: $bundleID)
+                
+                TextFieldView(label: "Device Token", text: $deviceToken)
             }
 
             Spacer(minLength: 20)
@@ -203,25 +133,13 @@ struct ContentView: View {
                 
                 Text("Config Payload")
                 
-                HStack {
-                    Text("Badge")
-                    TextField("Badge", text: $badge)
-                }
-
-                HStack {
-                    Text("Title")
-                    TextField("Title", text: $title)
-                }
-
-                HStack {
-                    Text("Sub title")
-                    TextField("Sub title", text: $subtitle)
-                }
-
-                HStack {
-                    Text("Body")
-                    TextField("Body", text: $bodyText)
-                }
+                TextFieldView(label: "Badge", text: $badge)
+                
+                TextFieldView(label: "Title", text: $title)
+                
+                TextFieldView(label: "Sub title", text: $subtitle)
+                
+                TextFieldView(label: "Body", text: $bodyText)
             }
             
             Spacer(minLength: 20)
@@ -263,62 +181,24 @@ struct ContentView: View {
         VStack {
             
             HStack {
-                HStack {
-                    Button {
-                        isCheckProduction = true
-                        isCHeckSanbox = false
-                    } label: {
-                        Image(systemName: isCheckProduction ? "checkmark.square" : "square")
-                    }
-                    Text("Production")
+                CheckboxView(text: "Production", isChecked: $isCheckProduction) { _ in
+                    isCHeckSanbox = false
                 }
-
-                HStack {
-                    Button {
-                        isCheckProduction = false
-                        isCHeckSanbox = true
-                    } label: {
-                        Image(systemName: isCHeckSanbox ? "checkmark.square" : "square")
-                    }
-                    Text("Sanbox")
+                
+                CheckboxView(text: "Sanbox", isChecked: $isCHeckSanbox) { _ in
+                    isCheckProduction = false
                 }
             }
             
             VStack(alignment: .leading) {
                 
-                HStack {
-                    Text(fileP12?.lastPathComponent ?? "Filename")
-                    Button {
-                        let panel = NSOpenPanel()
-                        panel.allowedFileTypes = ["p12"]
-                        panel.allowsMultipleSelection = false
-                        panel.canChooseDirectories = false
-                        panel.canCreateDirectories = false
-                        panel.title = "Select P12 file"
-
-                        if panel.runModal() == .OK,
-                            let url = panel.url {
-                            self.fileP12 = url
-                        }
-                    } label: {
-                        Text("Select P12 File")
-                    }
-                }
-
-                HStack {
-                    Text("Password")
-                    TextField("Password", text: $password)
-                }
-
-                HStack {
-                    Text("Bundle ID")
-                    TextField("Bundle ID", text: $bundleID)
-                }
-
-                HStack {
-                    Text("Device Token")
-                    TextField("Device Token", text: $deviceToken)
-                }
+                SelectFileView(label: "Select P12 file", fileType: "p12", file: $fileP12)
+                
+                TextFieldView(label: "Password", text: $password)
+                
+                TextFieldView(label: "Bundle ID", text: $bundleID)
+                
+                TextFieldView(label: "Device Token", text: $deviceToken)
             }
 
             Spacer(minLength: 20)
@@ -327,25 +207,13 @@ struct ContentView: View {
                 
                 Text("Config Payload")
                 
-                HStack {
-                    Text("Badge")
-                    TextField("Badge", text: $badge)
-                }
+                TextFieldView(label: "Badge", text: $badge)
                 
-                HStack {
-                    Text("Title")
-                    TextField("Title", text: $title)
-                }
+                TextFieldView(label: "Title", text: $title)
                 
-                HStack {
-                    Text("Sub title")
-                    TextField("Sub title", text: $subtitle)
-                }
+                TextFieldView(label: "Sub title", text: $subtitle)
                 
-                HStack {
-                    Text("Body")
-                    TextField("Body", text: $bodyText)
-                }
+                TextFieldView(label: "Body", text: $bodyText)
             }
             
             Spacer(minLength: 20)
@@ -389,47 +257,38 @@ struct ContentView: View {
     }
 
     var fcmView: some View {
-        VStack(alignment: .center) {
+        VStack(alignment: .leading) {
             
-            Spacer(minLength: 30)
-            
-            HStack {
-                Text("Server key")
-                TextField("Server key", text: $serverKey)
-            }
-            
-            HStack {
-                Text("FCM Token")
-                TextField("FCM Token", text: $fcmToken)
-            }
-            
-            Spacer(minLength: 30)
-            
-            HStack(alignment: .center, spacing: 20) {
-                HStack {
-                    Text("Badge")
-                    TextField("Badge", text: $badge)
-                }.frame(minWidth: 0, maxWidth: .infinity)
+            Group {
+                Spacer(minLength: 30)
                 
-                HStack {
-                    Text("Title")
-                    TextField("Title", text: $title)
-                }.frame(minWidth: 0, maxWidth: .infinity)
+                TextFieldView(label: "Server key", text: $serverKey)
+                
+                TextFieldView(label: "FCM Token", text: $fcmToken)
+            }
+            
+            Group {
+                Spacer(minLength: 30)
+                
+                Text("Config Payload")
+                
+                TextFieldView(label: "Badge", text: $badge)
+                
+                TextFieldView(label: "Title", text: $title)
+                
+                TextFieldView(label: "Sub title", text: $subtitle)
+                
+                TextFieldView(label: "Body", text: $bodyText)
             }
 
-            HStack(alignment: .center, spacing: 20) {
-                HStack {
-                    Text("Sub title")
-                    TextField("Sub title", text: $subtitle)
-                }.frame(minWidth: 0, maxWidth: .infinity)
+            Group {
+                Spacer(minLength: 30)
                 
-                HStack {
-                    Text("Body")
-                    TextField("Body", text: $bodyText)
-                }.frame(minWidth: 0, maxWidth: .infinity)
+                Text("Preview Payload")
+                
+                TextEditor(text: $payloadFCMiOS)
             }
-
-            TextEditor(text: $payloadFCMiOS)
+        
             Button("Submit") {
                 let payload = FCMiOSPayload(to: fcmToken, notification: .init(title: title, subtitle: subtitle, body: bodyText, badge: badge))
                 Task {
@@ -450,35 +309,34 @@ struct ContentView: View {
     }
     
     var androidView: some View {
-        VStack(alignment: .center) {
+        VStack(alignment: .leading) {
             
-            Spacer(minLength: 30)
-            
-            HStack {
-                Text("Server key")
-                TextField("Server key", text: $serverKey)
-            }
-            
-            HStack {
-                Text("FCM Token")
-                TextField("FCM Token", text: $androidFCMToken)
-            }
-            
-            Spacer(minLength: 30)
-            
-            HStack(alignment: .center, spacing: 20) {
-                HStack {
-                    Text("Title")
-                    TextField("Title", text: $title)
-                }.frame(minWidth: 0, maxWidth: .infinity)
+            Group {
+                Spacer(minLength: 30)
                 
-                HStack {
-                    Text("Body")
-                    TextField("Body", text: $bodyText)
-                }.frame(minWidth: 0, maxWidth: .infinity)
+                TextFieldView(label: "Server key", text: $serverKey)
+                
+                TextFieldView(label: "FCM Token", text: $fcmToken)
             }
-
-            TextEditor(text: $payloadFCMAndroid)
+            
+            Group {
+                Spacer(minLength: 30)
+                
+                Text("Config Payload")
+                
+                TextFieldView(label: "Title", text: $title)
+                            
+                TextFieldView(label: "Body", text: $bodyText)
+            }
+            
+            Group {
+                Spacer(minLength: 30)
+                
+                Text("Preview Payload")
+                
+                TextEditor(text: $payloadFCMAndroid)
+            }
+            
             Button("Submit") {
                 Task {
                     let payload = FCMAndroidPayload(to: androidFCMToken, notification: .init(title: title, body: bodyText))
@@ -503,36 +361,18 @@ struct ContentView: View {
 
             Spacer(minLength: 30)
 
-            HStack {
-                Text("Bundle ID")
-                TextField("Bundle ID", text: $bundleID)
-            }
+            TextFieldView(label: "Bundle ID", text: $bundleID)
             
-            HStack(alignment: .center, spacing: 20) {
-                HStack {
-                    Text("Badge")
-                    TextField("Badge", text: $badge)
-                }.frame(minWidth: 0, maxWidth: .infinity)
-                
-                HStack {
-                    Text("Title")
-                    TextField("Title", text: $title)
-                }.frame(minWidth: 0, maxWidth: .infinity)
-            }
-
-            HStack(alignment: .center, spacing: 20) {
-                HStack {
-                    Text("Sub title")
-                    TextField("Sub title", text: $subtitle)
-                }.frame(minWidth: 0, maxWidth: .infinity)
-                
-                HStack {
-                    Text("Body")
-                    TextField("Body", text: $bodyText)
-                }.frame(minWidth: 0, maxWidth: .infinity)
-            }
-
+            TextFieldView(label: "Badge", text: $badge)
+            
+            TextFieldView(label: "Title", text: $title)
+            
+            TextFieldView(label: "Sub title", text: $subtitle)
+            
+            TextFieldView(label: "Body", text: $bodyText)
+            
             TextEditor(text: $payloadSimulator)
+            
             Button("Submit") {
                 let payload = SimulatorPayload(bundle: bundleID, aps: .init(badge: Int(badge) ?? 0, alert: .init(title: title, subtitle: subtitle, body: bodyText)))
                 do {
@@ -550,10 +390,8 @@ struct ContentView: View {
     
     var main: some View {
         VStack {
-            Text("Select Push Notification Type")
             selectPushTypeView
             if isCheckAPNS {
-                Text("Select APNs Type")
                 selectAPNSTypeView
                 Text("Select Environment")
                 if isCheckAuthenticationKey {
