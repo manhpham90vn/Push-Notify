@@ -28,8 +28,7 @@
 		BB4B51E728FBAF6000EB1657 /* SelectFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4B51E628FBAF6000EB1657 /* SelectFileView.swift */; };
 		BBBBD4E328ED6454007CE31E /* Push.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBD4E128ED6454007CE31E /* Push.swift */; };
 		BBCE759128F1CFCF00599AD6 /* APNsPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCE758F28F1CFCF00599AD6 /* APNsPayload.swift */; };
-		BBCE759428F1CFEE00599AD6 /* FCMiOSPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCE759228F1CFEE00599AD6 /* FCMiOSPayload.swift */; };
-		BBCE759728F1D03B00599AD6 /* FCMAndroidPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCE759528F1D03B00599AD6 /* FCMAndroidPayload.swift */; };
+		BBCE759428F1CFEE00599AD6 /* FCMPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCE759228F1CFEE00599AD6 /* FCMPayload.swift */; };
 		BBCE759A28F1D38600599AD6 /* SimulatorPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCE759828F1D38600599AD6 /* SimulatorPayload.swift */; };
 		BBEFE3A528F1345B00124F7B /* PKCS12.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEFE3A328F1345900124F7B /* PKCS12.swift */; };
 /* End PBXBuildFile section */
@@ -71,8 +70,7 @@
 		BB4B51E628FBAF6000EB1657 /* SelectFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFileView.swift; sourceTree = "<group>"; };
 		BBBBD4E128ED6454007CE31E /* Push.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Push.swift; sourceTree = "<group>"; };
 		BBCE758F28F1CFCF00599AD6 /* APNsPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APNsPayload.swift; sourceTree = "<group>"; };
-		BBCE759228F1CFEE00599AD6 /* FCMiOSPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCMiOSPayload.swift; sourceTree = "<group>"; };
-		BBCE759528F1D03B00599AD6 /* FCMAndroidPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCMAndroidPayload.swift; sourceTree = "<group>"; };
+		BBCE759228F1CFEE00599AD6 /* FCMPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCMPayload.swift; sourceTree = "<group>"; };
 		BBCE759828F1D38600599AD6 /* SimulatorPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorPayload.swift; sourceTree = "<group>"; };
 		BBEFE3A328F1345900124F7B /* PKCS12.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PKCS12.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -166,8 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				BBCE758F28F1CFCF00599AD6 /* APNsPayload.swift */,
-				BBCE759228F1CFEE00599AD6 /* FCMiOSPayload.swift */,
-				BBCE759528F1D03B00599AD6 /* FCMAndroidPayload.swift */,
+				BBCE759228F1CFEE00599AD6 /* FCMPayload.swift */,
 				BBCE759828F1D38600599AD6 /* SimulatorPayload.swift */,
 			);
 			path = Model;
@@ -270,8 +267,7 @@
 				BB13A8CB28EE82AD0073CFC2 /* SSLPointerTricks.swift in Sources */,
 				BB32BD4128F872B90003C085 /* CheckboxView.swift in Sources */,
 				BB13A8C728EE82A50073CFC2 /* ECPublicKey.swift in Sources */,
-				BBCE759728F1D03B00599AD6 /* FCMAndroidPayload.swift in Sources */,
-				BBCE759428F1CFEE00599AD6 /* FCMiOSPayload.swift in Sources */,
+				BBCE759428F1CFEE00599AD6 /* FCMPayload.swift in Sources */,
 				BB13A8CA28EE82AB0073CFC2 /* EllipticCurve.swift in Sources */,
 				BB4B51E528FBAA4100EB1657 /* TextFieldView.swift in Sources */,
 				BBBBD4E328ED6454007CE31E /* Push.swift in Sources */,
@@ -424,7 +420,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.manhpham.Push-Notify";
 				PRODUCT_NAME = "Push Notify";
 				SDKROOT = macosx;
@@ -453,7 +449,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.manhpham.Push-Notify";
 				PRODUCT_NAME = "Push Notify";
 				SDKROOT = macosx;

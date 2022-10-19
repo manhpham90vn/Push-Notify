@@ -290,7 +290,7 @@ struct ContentView: View {
             }
         
             Button("Submit") {
-                let payload = FCMiOSPayload(to: fcmToken, notification: .init(title: title, subtitle: subtitle, body: bodyText, badge: badge))
+                let payload = FCMPayload(to: fcmToken, notification: .init(title: title, subtitle: subtitle, body: bodyText, badge: badge))
                 Task {
                     do {
                         payloadFCMiOS = try String(data: JSONEncoder().encode(payload), encoding: .utf8) ?? ""
@@ -339,7 +339,7 @@ struct ContentView: View {
             
             Button("Submit") {
                 Task {
-                    let payload = FCMAndroidPayload(to: androidFCMToken, notification: .init(title: title, body: bodyText))
+                    let payload = FCMPayload(to: androidFCMToken, notification: .init(title: title, body: bodyText))
                     do {
                         payloadFCMAndroid = try String(data: JSONEncoder().encode(payload), encoding: .utf8) ?? ""
                         let statusCode = try await Push.shared.push(serverKey: serverKey, aps: payload)

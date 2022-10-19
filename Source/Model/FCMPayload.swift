@@ -1,5 +1,5 @@
 //
-//  APNsPayload.swift
+//  FCMPayload.swift
 //  Push Notify
 //
 //  Created by Manh Pham on 08/10/2022.
@@ -7,17 +7,16 @@
 
 import Foundation
 
-struct APNsPayload: Codable {
-    var aps: APS
+struct FCMPayload: Codable {
+    var to: String
+    var notification: Notification?
 }
 
-struct APS: Codable {
-    var badge: Int?
-    var alert: Alert?
-}
-
-struct Alert: Codable {
+struct Notification: Codable {
     var title: String?
     var subtitle: String?
     var body: String?
+    var badge: String?
 }
+
+
