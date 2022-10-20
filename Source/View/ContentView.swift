@@ -316,7 +316,7 @@ struct ContentView: View {
                 
                 TextFieldView(label: "Server key", text: $serverKey)
                 
-                TextFieldView(label: "FCM Token", text: $fcmToken)
+                TextFieldView(label: "FCM Token", text: $androidFCMToken)
             }
             
             Group {
